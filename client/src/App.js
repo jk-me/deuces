@@ -1,25 +1,27 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  state = {hand: []}
+
+  componentDidMount(){
+    fetch('https://deckofcardsapi.com/api/deck/b3wse340ezeb/draw/?count=13')
+      .then(resp => resp.json())
+      .then(data => this.setState({hand: data.cards}))
+  }
+
+  renderHand = () =>{
+    return this.state.hand.map( card => {return <li>{card.code}</li>})
+  }
+
   render() {
+    console.log(this.state)
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <ul>
+          {this.renderHand()}
+        </ul>
+
       </div>
     );
   }
