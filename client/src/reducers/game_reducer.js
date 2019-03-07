@@ -1,7 +1,8 @@
-export default function gameReducer(state, action){
+export default function gameReducer(state = {hand: []}, action){
+  console.log(action)
   switch (action.type){
-    case 'LOAD':
-      return state
+    case 'DRAW_HAND':
+      return {hand: action.cards}
     default:
       return state
   }
