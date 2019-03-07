@@ -1,5 +1,6 @@
 import React from 'react'
 import Card from '../components/Card'
+import PlayButton from '../components/PlayButton'
 
 class HandContainer extends React.Component{
 
@@ -10,12 +11,8 @@ class HandContainer extends React.Component{
   render(){
     return(
       <div>
-        <ul>
-          {this.renderHand('hand1')}
-        </ul>
-        <ul>
-          {this.renderHand('hand2')}
-        </ul>
+          {this.renderHand(this.props.hand)}
+          <PlayButton />
       </div>
     )
   }

@@ -12,12 +12,14 @@ class App extends Component {
     this.props.fetchHand(2)
 
   }
-  
+
   render() {
     console.log(this.state)
     return (
       <div className="App">
-        <HandContainer hand1={this.props.hand1} hand2={this.props.hand2}/>
+        <HandContainer hand='hand1' hand1={this.props.hand1}/>
+        <HandContainer hand='hand2' hand2={this.props.hand2}/>
+
 
       </div>
     );

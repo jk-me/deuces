@@ -1,9 +1,14 @@
 import React from 'react'
 
-const Card = props =>{
-  return (
-    <img src={props.image} height='100'/>
-  )
+class Card  extends React.Component{
+  click = () =>{
+    console.log('clicked!')
+  }
+  render(){
+    return (
+        <img src={this.props.image} alt='' height='100' onClick={this.click}/>
+    )
+  }
 }
 
 export default Card
