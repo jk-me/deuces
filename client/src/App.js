@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import {connect} from 'react-redux'
 import {fetchHand, shuffleDeck} from './actions/gameActions'
-import Card from './components/Card'
+import HandContainer from './containers/HandContainer'
 
 class App extends Component {
 
@@ -12,21 +12,12 @@ class App extends Component {
     this.props.fetchHand(2)
 
   }
-
-  renderHand = (hnum) =>{
-    return this.props[hnum].map( card => {return <Card image={card.image}/>})
-  }
-
+  
   render() {
     console.log(this.state)
     return (
       <div className="App">
-        <ul>
-          {this.renderHand('hand1')}
-        </ul>
-        <ul>
-          {this.renderHand('hand2')}
-        </ul>
+        <HandContainer hand1={this.props.hand1} hand2={this.props.hand2}/>
 
       </div>
     );
