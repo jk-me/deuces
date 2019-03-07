@@ -2,11 +2,11 @@ import React from 'react'
 
 class Card  extends React.Component{
   click = () =>{
-    console.log('clicked!')
+    this.props.clickFn(this.props.card)
   }
   render(){
     return (
-        <img src={this.props.image} alt='' height='100' onClick={this.click}/>
+        <img src={this.props.card.image} alt='' height='100' onClick={this.click}/>
     )
   }
 }
