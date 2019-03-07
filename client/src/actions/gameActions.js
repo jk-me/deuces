@@ -12,7 +12,6 @@ export function shuffleDeck(){
   return dispatch =>{
     console.log('shuffling...')
     fetch('https://deckofcardsapi.com/api/deck/b3wse340ezeb/shuffle/')
-      .then(resp => resp.json())
       .then(data => console.log('shuffled.'))
   }
 }

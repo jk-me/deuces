@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import {connect} from 'react-redux'
 import {fetchHand, shuffleDeck} from './actions/gameActions'
+import Card from './components/Card'
 
 class App extends Component {
 
@@ -13,8 +14,7 @@ class App extends Component {
   }
 
   renderHand = (hnum) =>{
-    debugger
-    return this.props[hnum].map( card => {return <li>{card.code}</li>})
+    return this.props[hnum].map( card => {return <Card image={card.image}/>})
   }
 
   render() {
