@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
 import './App.css';
 import {connect} from 'react-redux'
-import {fetchHand} from './actions/gameActions'
+import {fetchHand, shuffleDeck} from './actions/gameActions'
 
 class App extends Component {
 
   componentDidMount(){
-    this.props.fetchHand()
-      debugger
-    // fetch('https://deckofcardsapi.com/api/deck/b3wse340ezeb/draw/?count=13')
-    //   .then(resp => resp.json())
-    //   .then(data => this.setState({hand: data.cards}))
+    this.props.shuffle()
+    this.props.fetchHand(1)
+    this.props.fetchHand(2)
+
   }
 
-  renderHand = () =>{
-    return this.props.hand.map( card => {return <li>{card.code}</li>})
+  renderHand = (hnum) =>{
+    debugger
+    return this.props[hnum].map( card => {return <li>{card.code}</li>})
   }
 
   render() {
@@ -22,7 +22,10 @@ class App extends Component {
     return (
       <div className="App">
         <ul>
-          {this.renderHand()}
+          {this.renderHand('hand1')}
+        </ul>
+        <ul>
+          {this.renderHand('hand2')}
         </ul>
 
       </div>
@@ -31,11 +34,14 @@ class App extends Component {
 }
 
 const mapStateToProps = state =>{
-  return {hand: state.hand}
+  return {hand1: state.hand1, hand2: state.hand2}
 }
 
 const mapDispatchToProps = dispatch =>{
-  return {fetchHand: () => dispatch(fetchHand())}
+  return {
+    fetchHand: (num) => dispatch(fetchHand(num)),
+    shuffle: () => dispatch(shuffleDeck())
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
