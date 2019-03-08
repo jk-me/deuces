@@ -1,7 +1,9 @@
 export default function gameReducer(
   state = {
     hand1: [],
-    hand2:[]
+    hand2:[],
+    current_player: '',
+    last_played: []
   },
   action){
   console.log(action)
