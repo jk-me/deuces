@@ -3,7 +3,7 @@ export default function gameReducer(
     hand1: [],
     hand2:[],
     current_player: '',
-    last_played: {play: 'pair', cards: [{value:'4', suit:'DIAMONDS', code: '0D'}, {value:'4', suit:'DIAMONDS', code: '0D'}, {value:'4', suit:'DIAMONDS', code: '0D'}]}
+    last_played: {play: 'pair', cards: [{value:'4', suit:'DIAMONDS', code: '0D'}, {value:'4', suit:'DIAMONDS', code: '0D'}]}
   },
   action){
 

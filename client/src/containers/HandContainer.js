@@ -39,28 +39,31 @@ class HandContainer extends React.Component{
           return 'single'
         }
       }
-      // else { return false }
     }
+
     else if (sel.length === 2){
-      if (sel[0].value === sel[1].value){
-        if (nums.indexOf(sel[0].value) > nums.indexOf(last.cards[0].value)) {
+      s = {vals: sel.map(c => c.value ), suits: sel.map(c => c.suit)}
+      l = {vals: last.cards.map(c => c.value ),
+          suits: last.cards.map(c => c.suit)}
+
+      if (s.vals[0] === s.vals[1]){
+        if (nums.indexOf(s.vals[0]) > nums.indexOf(l.vals[0])) {
           return 'pair'
         }
-        else if (sel[0].value === last.cards[0].value){
-          // if ((sel.suits.include('HEARTS') && !last.cards.suits.include('SPADES')) || sel.suits.include('SPADES')){
+        else if (s.vals[0] === l.vals[0]){
+          if ((s.suits.includes('HEARTS') && !l.suits.includes('SPADES')) || s.suits.includes('SPADES')){
             return 'pair'
-          // }
+          }
         }
       }
-      // else {return false}
     }
+
     else if (sel.length === 3){
       if (sel[0].value === sel[1].value && sel[2].value === sel[1].value){
         if ( nums.indexOf(sel[0].value) > nums.indexOf(last.cards[0].value) ) {
           return '3ofkind'
         }
       }
-      // else {return false}
     }
 
     else if (sel.length === 4){
@@ -70,6 +73,7 @@ class HandContainer extends React.Component{
         }
       }
     }
+
     else if (sel.length === 5){
     }
   }
@@ -77,7 +81,7 @@ class HandContainer extends React.Component{
   playFn = () => {
     //play logic
     const selected = this.state.selected    //[{card}, {card}]
-    const last_played = this.props.last_played    //{play:'' cards:[{card},{card}]}
+    const last_played = this.props.last_played  //{play:'' cards:[{card},{card}]}
     const play = this.checkValidTurn(selected, last_played)
     if ((selected.length === last_played.cards.length) || last_played.cards.length === 0){
       if (play){
