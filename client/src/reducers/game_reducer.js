@@ -3,7 +3,7 @@ export default function gameReducer(
     hand1: [],
     hand2:[],
     current_player: '',
-    last_played: []
+    last_played: [{value:'10', suit:'SPADES', code: '0S'}]
   },
   action){
 
