@@ -3,7 +3,7 @@ export default function gameReducer(
     hand1: [],
     hand2:[],
     current_player: '',
-    last_played: [{value:'10', suit:'SPADES', code: '0S'}]
+    last_played: {play: 'single', cards: [{value:'10', suit:'DIAMONDS', code: '0S'}]}
   },
   action){
 
@@ -16,7 +16,7 @@ export default function gameReducer(
       console.log(next_player)
       // return {...state,
       //   [action.current_player]: state.hand.remove(action.selected),
-      //   last_played: action.selected,
+      //   last_played: {play: action.play, cards:[...action.selected]},
       //   player: next_player
       // }
     default:

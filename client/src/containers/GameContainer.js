@@ -33,6 +33,7 @@ const mapStateToProps = state =>{
     hand2: state.hand2,
     current_player: state.current_player,  //0 or 1
     last_played: state.last_played
+      //{play:'' cards:[{card},{card}]}
   }
 }
 
@@ -40,11 +41,11 @@ const mapDispatchToProps = dispatch =>{
   return {
     fetchHand: (num) => dispatch(fetchHand(num)),
     shuffle: () => dispatch(shuffleDeck()),
-    playTurn: (selected, hand) => dispatch({
+    playTurn: (selected, hand, play) => dispatch({
       type: 'PLAY_TURN',
       selected: selected,
-      player: hand   //hand1 or hand2
-      // player: this.props.current_player
+      player: hand,   //hand1 or hand2
+      play: play     //'single', 'flush'
     })
   }
 }
