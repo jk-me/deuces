@@ -15,8 +15,13 @@ class GameContainer extends React.Component{
   render(){
     return (
       <div>
-        <HandContainer hand='hand1' hand1={this.props.hand1}/>
-        <HandContainer hand='hand2' hand2={this.props.hand2}/>
+        <HandContainer hand='hand1' hand1={this.props.hand1} playTurn= {this.props.playTurn} last_played= {this.props.last_played}/>
+        <HandContainer
+          hand='hand2'
+          hand2={this.props.hand2}
+          playTurn= {this.props.playTurn}
+          last_played= {this.props.last_played}
+        />
       </div>
     )
   }
@@ -26,7 +31,7 @@ const mapStateToProps = state =>{
   return {
     hand1: state.hand1,
     hand2: state.hand2,
-    current_player: state.current_player,
+    current_player: state.current_player,  //0 or 1
     last_played: state.last_played
   }
 }
@@ -34,7 +39,13 @@ const mapStateToProps = state =>{
 const mapDispatchToProps = dispatch =>{
   return {
     fetchHand: (num) => dispatch(fetchHand(num)),
-    shuffle: () => dispatch(shuffleDeck())
+    shuffle: () => dispatch(shuffleDeck()),
+    playTurn: (selected, hand) => dispatch({
+      type: 'PLAY_TURN',
+      selected: selected,
+      player: hand   //hand1 or hand2
+      // player: this.props.current_player
+    })
   }
 }
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import Card from '../components/Card'
-import PlayButton from '../components/PlayButton'
+// import PlayButton from '../components/PlayButton'
 
 class HandContainer extends React.Component{
   state={
@@ -17,6 +17,16 @@ class HandContainer extends React.Component{
     }
   }
 
+  playTurn = () => {
+    //play logic
+    if ((this.state.selected.length === this.props.last_played.length) || this.props.last_played.length === 0){
+      this.props.playTurn(this.state.selected, this.props.hand)}
+    else{
+      console.log('turn error')
+    }
+
+  }
+
   renderHand = (hnum) =>{
     return this.props[hnum].map( card => {return <Card card={card} clickFn={this.cardClick}/>})
   }
@@ -26,7 +36,7 @@ class HandContainer extends React.Component{
       <div>
           {this.renderHand(this.props.hand)}
           <p>{this.state.selected.join(',')}</p>
-          <PlayButton />
+          <button onClick={this.playTurn}>Play Selected Cards</button>
       </div>
     )
   }
