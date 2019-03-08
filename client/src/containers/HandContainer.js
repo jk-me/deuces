@@ -7,6 +7,9 @@ class HandContainer extends React.Component{
     selected: []
   }
 
+  nums = ['3','4','5','6','7','8','9','10','JACK','QUEEN','KING','ACE','2']
+  suits = ['DIAMONDS', 'CLUBS', 'HEARTS', 'SPADES']
+
   cardClick = (card) =>{
     console.log(`clicked! ${card.code}`)
     if (this.state.selected.includes(card)){
@@ -18,34 +21,54 @@ class HandContainer extends React.Component{
   }
 
   checkValidTurn = (sel, last) =>{
-    const nums = ['3','4','5','6','7','8','9','10','JACK','QUEEN','KING','ACE','2']
-    const suits = ['DIAMONDS', 'CLUBS', 'HEARTS', 'SPADES']
-    console.log(sel.length)
+    // sel->[{card},...]     last->{play:'' cards:[{card},...]}
+    const nums = this.nums
+    const suits = this.suits
+    let s, l
+    // console.log(s.length)
     if (last.cards.length === 0){ return true}
 
     if (sel.length === 1){
-      if (nums.indexOf(sel[0].value) > nums.indexOf(last.cards[0].value)){
-        console.log('t')
+      s = sel[0]
+      l = last.cards[0]
+      if (nums.indexOf(s.value) > nums.indexOf(l.value)){
         return 'single'
       }
-      else if (nums.indexOf(sel[0].value) === nums.indexOf(last.cards[0].value)){
-        if (suits.indexOf(sel[0].suit) > suits.indexOf(last.cards[0].suit)) {
-          console.log('t1')
-          return 'single' }
-        else {
-          console.log('f')
-          return false}
+      else if (nums.indexOf(s.value) === nums.indexOf(l.value)){
+        if (suits.indexOf(s.suit) > suits.indexOf(l.suit)) {
+          return 'single'
+        }
       }
-      else {
-        console.log('f2')
-        return false}
+      // else { return false }
     }
     else if (sel.length === 2){
-
+      if (sel[0].value === sel[1].value){
+        if (nums.indexOf(sel[0].value) > nums.indexOf(last.cards[0].value)) {
+          return 'pair'
+        }
+        else if (sel[0].value === last.cards[0].value){
+          // if ((sel.suits.include('HEARTS') && !last.cards.suits.include('SPADES')) || sel.suits.include('SPADES')){
+            return 'pair'
+          // }
+        }
+      }
+      // else {return false}
     }
     else if (sel.length === 3){
+      if (sel[0].value === sel[1].value && sel[2].value === sel[1].value){
+        if ( nums.indexOf(sel[0].value) > nums.indexOf(last.cards[0].value) ) {
+          return '3ofkind'
+        }
+      }
+      // else {return false}
     }
+
     else if (sel.length === 4){
+      if (sel[0].value === sel[1].value && sel[2].value === sel[1].value && sel[3].value === sel[1].value){
+        if ( nums.indexOf(sel[0].value) > nums.indexOf(last.cards[0].value) ) {
+          return '4ofkind'
+        }
+      }
     }
     else if (sel.length === 5){
     }
@@ -60,6 +83,7 @@ class HandContainer extends React.Component{
       if (play){
         this.props.playTurn(selected, this.props.hand, play)
       }
+      else (console.log('turn error 1'))
     }
     else{
       console.log('turn error')
