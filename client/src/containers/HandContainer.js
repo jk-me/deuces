@@ -14,7 +14,6 @@ class HandContainer extends React.Component{
     }
     else {
       this.setState({selected:[...this.state.selected, card.code]})
-      
     }
   }
 

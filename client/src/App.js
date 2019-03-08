@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import {connect} from 'react-redux'
 import {fetchHand, shuffleDeck} from './actions/gameActions'
-import HandContainer from './containers/HandContainer'
+import GameContainer from './containers/GameContainer'
 
 class App extends Component {
 
@@ -17,10 +17,10 @@ class App extends Component {
     console.log(this.state)
     return (
       <div className="App">
-        <HandContainer hand='hand1' hand1={this.props.hand1}/>
-        <HandContainer hand='hand2' hand2={this.props.hand2}/>
-
-
+        <GameContainer
+          hand1={this.props.hand1}
+          hand2={this.props.hand2}
+        />
       </div>
     );
   }
