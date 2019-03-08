@@ -25,8 +25,8 @@ class HandContainer extends React.Component{
     const nums = this.nums
     const suits = this.suits
     let s, l
-    // console.log(s.length)
-    if (last.cards.length === 0){ return true}
+
+    if (last.cards.length === 0) {return true}
 
     if (sel.length === 1){
       s = sel[0]
@@ -75,6 +75,26 @@ class HandContainer extends React.Component{
     }
 
     else if (sel.length === 5){
+      const types = ['straight', 'full house', 'flush', 'bomb', 'straight flush']
+
+      s = sel.sort(function(a,b) {return nums.indexOf(a.value) - nums.indexOf(b.value)} )
+      const sPlayType = this.fiveCardPlayType(s)
+
+      if (types.indexOf(sPlayType) > types.indexOf(last.play))
+        {return sPlayType}
+      else if (types.indexOf(sPlayType) > types.indexOf(last.play)){
+        //compare by play type
+      }
+
+    }
+  }
+
+  fiveCardPlayType = (s) =>{
+    if ((s[0].value === s[2].value && s[3].value === s[4].value) ||
+        (s[2].value === s[4].value && s[0].value === s[1].value))
+        {return 'full house'}
+    else if (s[0].value === s[3].value || s[1].value === s[4].value){
+        return 'bomb'
     }
   }
 
@@ -82,8 +102,9 @@ class HandContainer extends React.Component{
     //play logic
     const selected = this.state.selected    //[{card}, {card}]
     const last_played = this.props.last_played  //{play:'' cards:[{card},{card}]}
-    const play = this.checkValidTurn(selected, last_played)
     if ((selected.length === last_played.cards.length) || last_played.cards.length === 0){
+      const play = this.checkValidTurn(selected, last_played)
+      console.log(play)
       if (play){
         this.props.playTurn(selected, this.props.hand, play)
       }
@@ -95,14 +116,14 @@ class HandContainer extends React.Component{
 
   }
 
-  renderHand = (hnum) =>{
+  renderCards = (hnum) =>{
     return this.props[hnum].map( card => {return <Card card={card} clickFn={this.cardClick}/>})
   }
 
   render(){
     return(
       <div>
-          {this.renderHand(this.props.hand)}
+          {this.renderCards(this.props.hand)}
           <p>{this.state.selected.map( c => c.code)}</p>
           <button onClick={this.playFn}>Play Selected Cards</button>
       </div>
