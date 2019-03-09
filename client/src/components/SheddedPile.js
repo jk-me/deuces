@@ -1,9 +1,12 @@
 import React from 'react'
+import Card from './Card'
 
-const PlayButton = props =>{
+const SheddedPile = props =>{
   return(
-    <button>Play Selected Cards</button>
+    <div>
+      {props.cards.cards.map( card => {return <Card card={card}/>})}
+    </div>
   )
 }
 
-export default PlayButton
+export default SheddedPile

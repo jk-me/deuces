@@ -2,7 +2,7 @@ import React from 'react'
 import HandContainer from './HandContainer'
 import {connect} from 'react-redux'
 import {fetchHand, shuffleDeck} from '../actions/gameActions'
-
+import SheddedPile from '../components/SheddedPile'
 
 class GameContainer extends React.Component{
 
@@ -18,6 +18,9 @@ class GameContainer extends React.Component{
         <HandContainer player='hand1' hand={this.props.hand1.sort(function(a,b) {return ['3','4','5','6','7','8','9','10','JACK','QUEEN','KING','ACE','2'].indexOf(a.value) - ['3','4','5','6','7','8','9','10','JACK','QUEEN','KING','ACE','2'].indexOf(b.value)} )}
         playTurn= {this.props.playTurn}
         last_played= {this.props.last_played}/>
+
+        <SheddedPile cards={this.props.last_played}/>
+        
         <HandContainer
           player='hand2'
           hand={this.props.hand2}
@@ -34,7 +37,7 @@ const mapStateToProps = state =>{
   return {
     hand1: state.hand1,
     hand2: state.hand2,
-    current_player: state.current_player,  //0 or 1
+    player: state.player,  //hand1 or hand2
     last_played: state.last_played
       //{play:'' cards:[{card},{card}]}
   }
@@ -47,7 +50,6 @@ const mapDispatchToProps = dispatch =>{
     playTurn: (selected, player, play) => dispatch({
       type: 'PLAY_TURN',
       selected: selected,
-      // unselected: unselected,
       player: player,   //hand1 or hand2
       play: play     //'single', 'flush'
     })

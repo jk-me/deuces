@@ -3,7 +3,7 @@ export default function gameReducer(
   state = {
     hand1: [],
     hand2:[],
-    current_player: '',
+    player: '',
     last_played: {play: '', cards: []}
   },
   action){
