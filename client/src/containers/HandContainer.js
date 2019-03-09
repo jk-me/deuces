@@ -21,23 +21,21 @@ class HandContainer extends React.Component{
   }
 
   checkValidTurn = (sel, last) =>{
-    // sel->[{card},...]     last->{play:'' cards:[{card},...]}
 
     const nums = this.nums
     const suits = this.suits
+
     let s, l
     if (last.cards.length === 0) {return true}
 
     if (sel.length === 1){
       s = sel[0]
       l = last.cards[0]
-      if (nums.indexOf(s.value) > nums.indexOf(l.value)){
-        return 'single'
-      }
+      if (nums.indexOf(s.value) > nums.indexOf(l.value))
+        {return 'single'}
       else if (nums.indexOf(s.value) === nums.indexOf(l.value)){
-        if (suits.indexOf(s.suit) > suits.indexOf(l.suit)) {
-          return 'single'
-        }
+        if (suits.indexOf(s.suit) > suits.indexOf(l.suit))
+          {return 'single'}
       }
     }
 
@@ -47,43 +45,48 @@ class HandContainer extends React.Component{
           suits: last.cards.map(c => c.suit)}
 
       if (s.vals[0] === s.vals[1]){
-        if (nums.indexOf(s.vals[0]) > nums.indexOf(l.vals[0])) {
-          return 'pair'
-        }
+        if (nums.indexOf(s.vals[0]) > nums.indexOf(l.vals[0]))
+          {return 'pair'}
         else if (s.vals[0] === l.vals[0]){
-          if ((s.suits.includes('HEARTS') && !l.suits.includes('SPADES')) || s.suits.includes('SPADES')){
-            return 'pair'
-          }
+          if ((s.suits.includes('HEARTS') && !l.suits.includes('SPADES')) || s.suits.includes('SPADES'))
+            {return 'pair'}
         }
       }
     }
 
     else if (sel.length === 3){
       if (sel[0].value === sel[1].value && sel[2].value === sel[1].value){
-        if ( nums.indexOf(sel[0].value) > nums.indexOf(last.cards[0].value) ) {
-          return '3ofkind'
-        }
+        if ( nums.indexOf(sel[0].value) > nums.indexOf(last.cards[0].value) )
+          {return '3ofkind'}
       }
     }
 
     else if (sel.length === 4){
       if (sel[0].value === sel[1].value && sel[2].value === sel[1].value && sel[3].value === sel[1].value){
-        if ( nums.indexOf(sel[0].value) > nums.indexOf(last.cards[0].value) ) {
-          return '4ofkind'
-        }
+        if ( nums.indexOf(sel[0].value) > nums.indexOf(last.cards[0].value) )
+          { return '4ofkind' }
       }
     }
 
     else if (sel.length === 5){
       const types = ['straight', 'full house', 'flush', 'bomb', 'straight flush']
 
-      s = sel.sort(function(a,b) {return nums.indexOf(a.value) - nums.indexOf(b.value)} )
-      const sPlayType = this.fiveCardPlayType(s)
+      let sSort = sel.sort(function(a,b) {return nums.indexOf(a.value) - nums.indexOf(b.value)} )
+      const sPlayType = this.fiveCardPlayType(sSort)
 
       if (types.indexOf(sPlayType) > types.indexOf(last.play))
         {return sPlayType}
       else if (types.indexOf(sPlayType) === types.indexOf(last.play)){
-        {return sPlayType}
+        // debugger
+        if (sPlayType === 'straight') {
+          if (nums.indexOf(sSort[4].value) > nums.indexOf(last.cards[4].value) )
+            {return sPlayType}
+          else if (nums.indexOf(sSort[4].value) === nums.indexOf(last.cards[4].value) ){
+            if (suits.indexOf(sSort[4].suit) > suits.indexOf(last.cards[4].suit))
+              {return sPlayType}
+          }
+
+        }
         //compare by play type
       }
 
@@ -95,15 +98,12 @@ class HandContainer extends React.Component{
     const nums = this.nums
     let straight =[]
     for (let i=0; i<4; i++){ straight.push(nums.indexOf(sSplit.vals[i])+1 === (nums.indexOf(sSplit.vals[i+1])) ) }
-    debugger
 
-    console.log(sSplit)
     if ((s[0].value === s[2].value && s[3].value === s[4].value) ||
         (s[2].value === s[4].value && s[0].value === s[1].value))
-        {return 'full house'}    //sorted by value, has triple and double
-    else if (s[0].value === s[3].value || s[1].value === s[4].value){
-        return 'bomb'     //sorted by value, 4 cards in a row have same value
-    }
+      {return 'full house'}    //sorted by value, has triple and double
+    else if (s[0].value === s[3].value || s[1].value === s[4].value)
+      {return 'bomb'}     //sorted by value, 4 cards in a row have same value
     else if ((sSplit.suits).every( (el, i, arr) => el === arr[0])){
       if (straight.every( ele => ele === true))
         {return 'straight flush'}
@@ -119,12 +119,13 @@ class HandContainer extends React.Component{
     const selected = this.state.selected    //[{card}, {card}]
     const last_played = this.props.last_played  //{play:'' cards:[{card},{card}]}
     if ((selected.length === last_played.cards.length) || last_played.cards.length === 0){
+
+
       const play = this.checkValidTurn(selected, last_played)
-      console.log(play)
-      if (play){
-        this.props.playTurn(selected, this.props.hand, play)
-      }
-      else (console.log('turn error 1'))
+      if (play)
+        { this.props.playTurn(selected, this.props.hand, play) }
+      else
+        (console.log('turn error 1'))
     }
     else{
       console.log('turn error')
