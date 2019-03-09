@@ -15,14 +15,19 @@ class GameContainer extends React.Component{
   render(){
     return (
       <div>
-        <HandContainer player='hand1' hand={this.props.hand1.sort(function(a,b) {return ['3','4','5','6','7','8','9','10','JACK','QUEEN','KING','ACE','2'].indexOf(a.value) - ['3','4','5','6','7','8','9','10','JACK','QUEEN','KING','ACE','2'].indexOf(b.value)} )}
-        playTurn= {this.props.playTurn}
-        last_played= {this.props.last_played}/>
+        <HandContainer
+         player='hand1'
+         current={this.props.player}
+         hand={this.props.hand1.sort(function(a,b)
+           {return ['3','4','5','6','7','8','9','10','JACK','QUEEN','KING','ACE','2'].indexOf(a.value) - ['3','4','5','6','7','8','9','10','JACK','QUEEN','KING','ACE','2'].indexOf(b.value)} )}
+         playTurn= {this.props.playTurn}
+         last_played= {this.props.last_played}/>
 
         <SheddedPile cards={this.props.last_played}/>
 
         <HandContainer
           player='hand2'
+          current={this.props.player} 
           hand={this.props.hand2}
           playTurn= {this.props.playTurn}
           last_played= {this.props.last_played}

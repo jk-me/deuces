@@ -22,16 +22,13 @@ class HandContainer extends React.Component{
   }
 
   checkValidTurn = (sel, last) =>{
-
     const nums = this.nums
     const suits = this.suits
-
-    let s, l
     if (last.cards.length === 0) {return true}
 
     if (sel.length === 1){
-      s = sel[0]
-      l = last.cards[0]
+      let s = sel[0]
+      let l = last.cards[0]
       if (nums.indexOf(s.value) > nums.indexOf(l.value))
         {return 'single'}
       else if (nums.indexOf(s.value) === nums.indexOf(l.value)){
@@ -41,8 +38,8 @@ class HandContainer extends React.Component{
     }
 
     else if (sel.length === 2){
-      s = {vals: sel.map(c => c.value ), suits: sel.map(c => c.suit)}
-      l = {vals: last.cards.map(c => c.value ),
+      let s = {vals: sel.map(c => c.value ), suits: sel.map(c => c.suit)}
+      let l = {vals: last.cards.map(c => c.value ),
           suits: last.cards.map(c => c.suit)}
 
       if (s.vals[0] === s.vals[1]){
@@ -153,14 +150,25 @@ class HandContainer extends React.Component{
     return this.props.hand.map( card => {return <Card card={card} clickFn={this.cardClick}/>})
   }
 
+  renderButtons = () =>{
+    if (this.props.player === this.props.current){
+      return (
+        <div>
+          <button onClick={this.playFn}>Play Selected Cards</button>
+          <button onClick={this.passFn}>Pass Turn</button>
+        </div>
+      )
+    }
+  }
+
   render(){
     // debugger
     return(
       <div>
           {this.renderCards()}
           <p>{this.state.selected.map( c => c.code)}</p>
-          <button onClick={this.playFn}>Play Selected Cards</button>
-          <button onClick={this.passFn}>Pass Turn</button>
+          {this.renderButtons()}
+
       </div>
     )
   }
