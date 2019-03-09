@@ -9,9 +9,11 @@ class HandContainer extends React.Component{
 
   nums = ['3','4','5','6','7','8','9','10','JACK','QUEEN','KING','ACE','2']
   suits = ['DIAMONDS', 'CLUBS', 'HEARTS', 'SPADES']
+  // unselected = []
 
   cardClick = (card) =>{
     console.log(`clicked! ${card.code}`)
+
     if (this.state.selected.includes(card)){
       this.setState({selected:[...this.state.selected.filter(c => c !== card)]})
     }
@@ -76,20 +78,34 @@ class HandContainer extends React.Component{
 
       if (types.indexOf(sPlayType) > types.indexOf(last.play))
         {return sPlayType}
+
       else if (types.indexOf(sPlayType) === types.indexOf(last.play)){
         // debugger
-        if (sPlayType === 'straight') {
+        if (sPlayType === 'straight' || sPlayType === 'straight flush') {
           if (nums.indexOf(sSort[4].value) > nums.indexOf(last.cards[4].value) )
             {return sPlayType}
           else if (nums.indexOf(sSort[4].value) === nums.indexOf(last.cards[4].value) ){
             if (suits.indexOf(sSort[4].suit) > suits.indexOf(last.cards[4].suit))
               {return sPlayType}
           }
-
         }
-        //compare by play type
-      }
 
+        else if (sPlayType === 'flush'){
+          if (suits.indexOf(sSort[4].suit) > suits.indexOf(last.cards[4].suit))
+            {return sPlayType}
+          else if (suits.indexOf(sSort[4].suit) === suits.indexOf(last.cards[4].suit)) {
+
+              if (nums.indexOf(sSort[4].value) > nums.indexOf(last.cards[4].value) )
+              {return sPlayType}
+          }
+        }
+
+        else if (sPlayType === 'bomb' || sPlayType === 'full house'){
+          if (nums.indexOf(sSort[2].value) > nums.indexOf(last.cards[2].value) )
+            {return sPlayType}
+        }
+
+      }
     }
   }
 
@@ -120,27 +136,25 @@ class HandContainer extends React.Component{
     const last_played = this.props.last_played  //{play:'' cards:[{card},{card}]}
     if ((selected.length === last_played.cards.length) || last_played.cards.length === 0){
 
-
       const play = this.checkValidTurn(selected, last_played)
-      if (play)
-        { this.props.playTurn(selected, this.props.hand, play) }
-      else
-        (console.log('turn error 1'))
+      if (play){
+        this.props.playTurn(selected, this.props.player, play)
+        this.setState({selected: []})
+      }
+      else{ (console.log('your play is smaller')) }
     }
-    else{
-      console.log('turn error')
-    }
-
+    else{ console.log('invalid number of cards played') }
   }
 
-  renderCards = (hnum) =>{
-    return this.props[hnum].map( card => {return <Card card={card} clickFn={this.cardClick}/>})
+  renderCards = () =>{
+    return this.props.hand.map( card => {return <Card card={card} clickFn={this.cardClick}/>})
   }
 
   render(){
+    // debugger
     return(
       <div>
-          {this.renderCards(this.props.hand)}
+          {this.renderCards()}
           <p>{this.state.selected.map( c => c.code)}</p>
           <button onClick={this.playFn}>Play Selected Cards</button>
       </div>

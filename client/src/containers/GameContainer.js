@@ -15,13 +15,16 @@ class GameContainer extends React.Component{
   render(){
     return (
       <div>
-        <HandContainer hand='hand1' hand1={this.props.hand1} playTurn= {this.props.playTurn} last_played= {this.props.last_played}/>
+        <HandContainer player='hand1' hand={this.props.hand1.sort(function(a,b) {return ['3','4','5','6','7','8','9','10','JACK','QUEEN','KING','ACE','2'].indexOf(a.value) - ['3','4','5','6','7','8','9','10','JACK','QUEEN','KING','ACE','2'].indexOf(b.value)} )}
+        playTurn= {this.props.playTurn}
+        last_played= {this.props.last_played}/>
         <HandContainer
-          hand='hand2'
-          hand2={this.props.hand2}
+          player='hand2'
+          hand={this.props.hand2}
           playTurn= {this.props.playTurn}
           last_played= {this.props.last_played}
         />
+        <p> Shedded Pile: {this.props.last_played.cards.map( c => c.code)}</p>
       </div>
     )
   }
@@ -41,10 +44,11 @@ const mapDispatchToProps = dispatch =>{
   return {
     fetchHand: (num) => dispatch(fetchHand(num)),
     shuffle: () => dispatch(shuffleDeck()),
-    playTurn: (selected, hand, play) => dispatch({
+    playTurn: (selected, player, play) => dispatch({
       type: 'PLAY_TURN',
       selected: selected,
-      player: hand,   //hand1 or hand2
+      // unselected: unselected,
+      player: player,   //hand1 or hand2
       play: play     //'single', 'flush'
     })
   }

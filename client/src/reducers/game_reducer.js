@@ -1,9 +1,10 @@
 export default function gameReducer(
+
   state = {
     hand1: [],
     hand2:[],
     current_player: '',
-    last_played: {play: 'straight', cards: [{value:'4', suit:'SPADES', code: '0D'}, {value:'4', suit:'DIAMONDS', code: '0D'}, {value:'4', suit:'DIAMONDS', code: '0D'}, {value:'4', suit:'DIAMONDS', code: '0D'}, {value:'8', suit:'DIAMONDS', code: '0D'}]}
+    last_played: {play: '', cards: []}
   },
   action){
 
@@ -14,11 +15,12 @@ export default function gameReducer(
     case 'PLAY_TURN':
       const next_player = action.player === 'hand1' ? 'hand2' : 'hand1'
       console.log(next_player)
-      // return {...state,
-      //   [action.current_player]: state.hand.remove(action.selected),
-      //   last_played: {play: action.play, cards:[...action.selected]},
-      //   player: next_player
-      // }
+      // debugger
+      return {...state,
+        [action.player]: state[action.player].filter( el => !action.selected.includes(el)),
+        last_played: {play: action.play, cards:[...action.selected]},
+        player: next_player
+      }
     default:
       return state
   }
