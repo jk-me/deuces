@@ -20,14 +20,14 @@ class GameContainer extends React.Component{
         last_played= {this.props.last_played}/>
 
         <SheddedPile cards={this.props.last_played}/>
-        
+
         <HandContainer
           player='hand2'
           hand={this.props.hand2}
           playTurn= {this.props.playTurn}
           last_played= {this.props.last_played}
         />
-        <p> Shedded Pile: {this.props.last_played.cards.map( c => c.code)}</p>
+        <p> Your turn: {this.props.player}</p>
       </div>
     )
   }

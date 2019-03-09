@@ -3,7 +3,7 @@ import Card from './Card'
 
 const SheddedPile = props =>{
   return(
-    <div>
+    <div className='shedded'>
       {props.cards.cards.map( card => {return <Card card={card}/>})}
     </div>
   )

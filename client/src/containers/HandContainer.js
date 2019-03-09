@@ -13,7 +13,6 @@ class HandContainer extends React.Component{
 
   cardClick = (card) =>{
     console.log(`clicked! ${card.code}`)
-
     if (this.state.selected.includes(card)){
       this.setState({selected:[...this.state.selected.filter(c => c !== card)]})
     }
@@ -146,6 +145,10 @@ class HandContainer extends React.Component{
     else{ console.log('invalid number of cards played') }
   }
 
+  passFn = () =>{
+    this.props.playTurn([],this.props.player, '')
+  }
+
   renderCards = () =>{
     return this.props.hand.map( card => {return <Card card={card} clickFn={this.cardClick}/>})
   }
@@ -157,6 +160,7 @@ class HandContainer extends React.Component{
           {this.renderCards()}
           <p>{this.state.selected.map( c => c.code)}</p>
           <button onClick={this.playFn}>Play Selected Cards</button>
+          <button onClick={this.passFn}>Pass Turn</button>
       </div>
     )
   }
