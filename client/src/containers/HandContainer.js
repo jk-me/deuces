@@ -22,10 +22,10 @@ class HandContainer extends React.Component{
 
   checkValidTurn = (sel, last) =>{
     // sel->[{card},...]     last->{play:'' cards:[{card},...]}
+
     const nums = this.nums
     const suits = this.suits
     let s, l
-
     if (last.cards.length === 0) {return true}
 
     if (sel.length === 1){
@@ -82,7 +82,8 @@ class HandContainer extends React.Component{
 
       if (types.indexOf(sPlayType) > types.indexOf(last.play))
         {return sPlayType}
-      else if (types.indexOf(sPlayType) > types.indexOf(last.play)){
+      else if (types.indexOf(sPlayType) === types.indexOf(last.play)){
+        {return sPlayType}
         //compare by play type
       }
 
@@ -90,12 +91,27 @@ class HandContainer extends React.Component{
   }
 
   fiveCardPlayType = (s) =>{
+    const sSplit = {vals: s.map(c => c.value ), suits: s.map(c => c.suit)}
+    const nums = this.nums
+    let straight =[]
+    for (let i=0; i<4; i++){ straight.push(nums.indexOf(sSplit.vals[i])+1 === (nums.indexOf(sSplit.vals[i+1])) ) }
+    debugger
+
+    console.log(sSplit)
     if ((s[0].value === s[2].value && s[3].value === s[4].value) ||
         (s[2].value === s[4].value && s[0].value === s[1].value))
-        {return 'full house'}
+        {return 'full house'}    //sorted by value, has triple and double
     else if (s[0].value === s[3].value || s[1].value === s[4].value){
-        return 'bomb'
+        return 'bomb'     //sorted by value, 4 cards in a row have same value
     }
+    else if ((sSplit.suits).every( (el, i, arr) => el === arr[0])){
+      if (straight.every( ele => ele === true))
+        {return 'straight flush'}
+      else
+        {return 'flush'}
+    }
+    else if (straight.every( ele => ele === true))
+      {return 'straight'}
   }
 
   playFn = () => {
