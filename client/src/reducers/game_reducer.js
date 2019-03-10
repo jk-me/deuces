@@ -3,7 +3,7 @@ export default function gameReducer(
   state = {
     deck_id: '',
     sessions: [],
-    deck: 'b3wse340ezeb',
+    deck: '',//'b3wse340ezeb',
     hand1: [],
     hand2:[],
     player: '',
@@ -19,6 +19,9 @@ export default function gameReducer(
 
     case 'SET_DECK':
       return{...state, deck:action.deck, deck_id: action.deck_id}
+
+    case 'FETCH_NEW_DECK':
+      return{...state, deck:action.deck}
 
     case 'DRAW_HAND':
       return {...state, [action.num]: action.cards, player:''}

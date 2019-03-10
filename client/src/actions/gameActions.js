@@ -6,6 +6,14 @@ export function fetchGames(){
   }
 }
 
+export function fetchNewDeck(){
+  return dispatch=>{
+    fetch('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1')
+      .then(resp => resp.json())
+      .then(data => dispatch({type:'FETCH_NEW_DECK', deck: data.deck_id}))
+  }
+}
+
 export function fetchHand(num, deckstr){
   return dispatch =>{
     dispatch({type: 'LOADING'})
