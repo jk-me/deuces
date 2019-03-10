@@ -11,7 +11,7 @@ export default function gameReducer(
   console.log(action)
   switch (action.type){
     case 'DRAW_HAND':
-      return {...state, [action.num]: action.cards}
+      return {...state, [action.num]: action.cards, player:''}
     case 'SET_FIRST_PLAYER':
       return {...state, player: action.player}
     case 'PLAY_TURN':
