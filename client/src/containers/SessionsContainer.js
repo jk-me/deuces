@@ -1,7 +1,7 @@
 import React from 'react'
 import Session from '../components/Session'
 import {connect} from 'react-redux'
-import {fetchNewDeck} from '../actions/gameActions'
+import {fetchNewDeck, saveDeck} from '../actions/gameActions'
 
 class SessionsContainer extends React.Component{
 
@@ -17,8 +17,9 @@ class SessionsContainer extends React.Component{
 
   newSession = () =>{
     this.props.fetchNewDeck()
-    setTimeout(()=>console.log(this.props.deck), 1000)
-
+    setTimeout(()=>console.log(this.props.deck), 500)
+    console.log('hi')
+    setTimeout(()=>this.props.saveDeck({game:{deck_key: this.props.deck}}), 1000)
   }
 
   render(){
@@ -46,7 +47,8 @@ const mapDispatchToProps = dispatch =>{
         deck: deck,
         deck_id: id
       }),
-    fetchNewDeck: () => dispatch(fetchNewDeck())
+    fetchNewDeck: () => dispatch(fetchNewDeck()),
+    saveDeck: (data) => dispatch(saveDeck(data))
   }
 }
 

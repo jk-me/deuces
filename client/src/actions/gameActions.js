@@ -14,6 +14,23 @@ export function fetchNewDeck(){
   }
 }
 
+export function saveDeck(deckData){
+  let data = {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(deckData)
+  }
+  return dispatch=>{
+    fetch('http://localhost:3001/games', data)
+      .then(resp => resp.json())
+      .then(deck => dispatch({type: 'SAVE_NEW_SESSION', payload: deck}))
+      .catch(err=>err)
+  }
+}
+
 export function fetchHand(num, deckstr){
   return dispatch =>{
     dispatch({type: 'LOADING'})

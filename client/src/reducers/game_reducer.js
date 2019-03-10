@@ -23,6 +23,13 @@ export default function gameReducer(
     case 'FETCH_NEW_DECK':
       return{...state, deck:action.deck}
 
+    case 'SAVE_NEW_SESSION':
+      return{...state,
+        sessions:[...state.sessions, action.payload],
+        deck_id: action.payload.id,
+        deck: action.payload.deck_key
+      }
+
     case 'DRAW_HAND':
       return {...state, [action.num]: action.cards, player:''}
 
