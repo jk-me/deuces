@@ -1,6 +1,7 @@
 export default function gameReducer(
 
   state = {
+    deck_id: '',
     sessions: [],
     deck: 'b3wse340ezeb',
     hand1: [],
@@ -17,7 +18,7 @@ export default function gameReducer(
       return {...state, sessions: action.sessions}
 
     case 'SET_DECK':
-      return{...state, deck:action.deck}
+      return{...state, deck:action.deck, deck_id: action.deck_id}
 
     case 'DRAW_HAND':
       return {...state, [action.num]: action.cards, player:''}

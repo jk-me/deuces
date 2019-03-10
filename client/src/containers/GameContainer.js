@@ -57,6 +57,7 @@ class GameContainer extends React.Component{
           last_played= {this.props.last_played}
         />
         <p> Your turn: {this.props.player} </p>
+        <p> Playing session: {this.props.deck_id} </p>
 
         <button onClick={this.newGame}>New Game</button>
         <button onClick={this.determineFirst}>Set first player</button>
@@ -67,6 +68,7 @@ class GameContainer extends React.Component{
 
 const mapStateToProps = state =>{
   return {
+    deck_id: state.deck_id,
     deck: state.deck,
     hand1: state.hand1,
     hand2: state.hand2,
