@@ -1,6 +1,7 @@
 export default function gameReducer(
 
   state = {
+    deck: 'b3wse340ezeb',
     hand1: [],
     hand2:[],
     player: '',

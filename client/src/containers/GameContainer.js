@@ -32,9 +32,11 @@ class GameContainer extends React.Component{
   }
 
   newGame = () =>{
+    let deck = this.props.deck
     this.props.shuffle()
-    this.props.fetchHand(1)
-    this.props.fetchHand(2).then(console.log(this.props.hand1))
+    console.log(deck)
+    this.props.fetchHand(1, deck)
+    this.props.fetchHand(2, deck)
   }
 
   render(){
@@ -66,6 +68,7 @@ class GameContainer extends React.Component{
 
 const mapStateToProps = state =>{
   return {
+    deck: state.deck,
     hand1: state.hand1,
     hand2: state.hand2,
     player: state.player,  //hand1 or hand2
@@ -76,7 +79,7 @@ const mapStateToProps = state =>{
 
 const mapDispatchToProps = dispatch =>{
   return {
-    fetchHand: (num) => dispatch(fetchHand(num)),
+    fetchHand: (num, deck) => dispatch(fetchHand(num, deck)),
     shuffle: () => dispatch(shuffleDeck()),
     setFirst: (player) => dispatch({
       type: 'SET_FIRST_PLAYER',
