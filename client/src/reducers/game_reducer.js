@@ -15,10 +15,16 @@ export default function gameReducer(
     case 'FETCH_SESSIONS':
       console.log(action.sessions)
       return {...state, sessions: action.sessions}
+
+    case 'SET_DECK':
+      return{...state, deck:action.deck}
+
     case 'DRAW_HAND':
       return {...state, [action.num]: action.cards, player:''}
+
     case 'SET_FIRST_PLAYER':
       return {...state, player: action.player}
+
     case 'PLAY_TURN':
       const next_player = action.player === 'hand1' ? 'hand2' : 'hand1'
       console.log(next_player)

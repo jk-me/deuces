@@ -1,8 +1,8 @@
 import React from 'react'
-import HandContainer from './HandContainer'
+import Hand from '../components/Hand'
+import SheddedPile from '../components/SheddedPile'
 import {connect} from 'react-redux'
 import {fetchGames, fetchHand, shuffleDeck} from '../actions/gameActions'
-import SheddedPile from '../components/SheddedPile'
 
 class GameContainer extends React.Component{
 
@@ -40,7 +40,7 @@ class GameContainer extends React.Component{
   render(){
     return (
       <div>
-        <HandContainer
+        <Hand
          player='hand1'
          current={this.props.player}
          hand={this.props.hand1}
@@ -49,7 +49,7 @@ class GameContainer extends React.Component{
 
         <SheddedPile cards={this.props.last_played}/>
 
-        <HandContainer
+        <Hand
           player='hand2'
           current={this.props.player}
           hand={this.props.hand2}

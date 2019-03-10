@@ -2,7 +2,7 @@ import React from 'react'
 import Card from '../components/Card'
 // import PlayButton from '../components/PlayButton'
 
-class HandContainer extends React.Component{
+class Hand extends React.Component{
   state={
     selected: []
   }
@@ -172,4 +172,4 @@ class HandContainer extends React.Component{
   }
 }
 
-export default HandContainer
+export default Hand
