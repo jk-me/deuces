@@ -128,7 +128,7 @@ class Hand extends React.Component{
   checkWin = () =>{
     // debugger
     if (this.props.hand.length === 0){
-      this.props.gameWon(this.props.player, this.props.deck_id)
+      this.props.gameWon({game:{p1wins:this.props.session.p1wins+1}}, this.props.session.id)
     }
   }
 

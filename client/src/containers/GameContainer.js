@@ -47,7 +47,7 @@ class GameContainer extends React.Component{
           playTurn= {this.props.playTurn}
           last_played= {this.props.last_played}
           gameWon={this.props.gameWon}
-          deck_id={this.props.deck_id}
+          session={this.props.current_session}
         />
 
         <SheddedPile cards={this.props.last_played}/>
@@ -59,11 +59,14 @@ class GameContainer extends React.Component{
           playTurn= {this.props.playTurn}
           last_played= {this.props.last_played}
           gameWon={this.props.gameWon}
-          deck_id={this.props.deck_id}
+          session={this.props.current_session}
         />
 
         <p> Your turn: {this.props.player} </p>
-        <p> Playing session: {this.props.deck_id} </p>
+        <p> Playing session: {this.props.current_session.id} </p>
+        <p> P1 wins: {this.props.current_session.p1wins} </p>
+        <p> P2 wins: {this.props.current_session.p2wins} </p>
+
 
         <button onClick={this.newGame}>New Game</button>
         <button onClick={this.determineFirst}>Set first player</button>
@@ -75,7 +78,6 @@ class GameContainer extends React.Component{
 const mapStateToProps = state =>{
   return {
     current_session: state.current_sess,
-    deck_id: state.deck_id,
     deck: state.deck,
     hand1: state.hand1,
     hand2: state.hand2,
