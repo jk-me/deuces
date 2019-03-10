@@ -1,15 +1,13 @@
 import React from 'react'
 import HandContainer from './HandContainer'
 import {connect} from 'react-redux'
-import {fetchHand, shuffleDeck} from '../actions/gameActions'
+import {fetchGames, fetchHand, shuffleDeck} from '../actions/gameActions'
 import SheddedPile from '../components/SheddedPile'
 
 class GameContainer extends React.Component{
 
   componentDidMount(){
-    // this.props.shuffle()
-    // this.props.fetchHand(1)
-    // this.props.fetchHand(2)
+    this.props.fetchGames()
   }
 
   determineFirst = () =>{
@@ -29,7 +27,7 @@ class GameContainer extends React.Component{
       else if (suits.indexOf(h2[0].suit) < suits.indexOf(h1[0].suit))
         { this.props.setFirst('hand2')  }
     }
-  }
+  } //returns 'hand1' or 'hand2'
 
   newGame = () =>{
     let deck = this.props.deck
@@ -59,6 +57,7 @@ class GameContainer extends React.Component{
           last_played= {this.props.last_played}
         />
         <p> Your turn: {this.props.player} </p>
+
         <button onClick={this.newGame}>New Game</button>
         <button onClick={this.determineFirst}>Set first player</button>
       </div>
@@ -72,13 +71,13 @@ const mapStateToProps = state =>{
     hand1: state.hand1,
     hand2: state.hand2,
     player: state.player,  //hand1 or hand2
-    last_played: state.last_played
-      //{play:'' cards:[{card},{card}]}
+    last_played: state.last_played //{play:'' cards:[{card},{card}]}
   }
 }
 
 const mapDispatchToProps = dispatch =>{
   return {
+    fetchGames: () => dispatch(fetchGames()),
     fetchHand: (num, deck) => dispatch(fetchHand(num, deck)),
     shuffle: () => dispatch(shuffleDeck()),
     setFirst: (player) => dispatch({

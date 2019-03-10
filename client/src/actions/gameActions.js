@@ -1,3 +1,11 @@
+export function fetchGames(){
+  return dispatch =>{
+    fetch('http://localhost:3001/games')
+      .then(resp => resp.json())
+      .then(data => dispatch({type:'FETCH_SESSIONS', sessions: data}))
+  }
+}
+
 export function fetchHand(num, deckstr){
   return dispatch =>{
     dispatch({type: 'LOADING'})

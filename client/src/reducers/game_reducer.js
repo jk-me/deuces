@@ -1,6 +1,7 @@
 export default function gameReducer(
 
   state = {
+    sessions: [],
     deck: 'b3wse340ezeb',
     hand1: [],
     hand2:[],
@@ -11,6 +12,9 @@ export default function gameReducer(
 
   console.log(action)
   switch (action.type){
+    case 'FETCH_SESSIONS':
+      console.log(action.sessions)
+      return {...state, sessions: action.sessions}
     case 'DRAW_HAND':
       return {...state, [action.num]: action.cards, player:''}
     case 'SET_FIRST_PLAYER':

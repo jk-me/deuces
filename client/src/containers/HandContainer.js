@@ -124,7 +124,7 @@ class HandContainer extends React.Component{
     }
     else if (straight.every( ele => ele === true))
       {return 'straight'}
-  }
+  }  //rtrn 'straight', 'flush', etc
 
   playFn = () => {
     //play logic
