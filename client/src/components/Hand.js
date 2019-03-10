@@ -1,9 +1,8 @@
 import React from 'react'
 import Card from '../components/Card'
-// import PlayButton from '../components/PlayButton'
 
 class Hand extends React.Component{
-  state={
+  state = {
     selected: []
   }
 
@@ -126,16 +125,24 @@ class Hand extends React.Component{
       {return 'straight'}
   }  //rtrn 'straight', 'flush', etc
 
+  checkWin = () =>{
+    debugger
+    if (this.props.hand.length === 0){
+      console.log(this.props.player + ' has won.')
+    }
+  }
+
   playFn = () => {
     //play logic
     const selected = this.state.selected    //[{card}, {card}]
     const last_played = this.props.last_played  //{play:'' cards:[{card},{card}]}
-    if ((selected.length === last_played.cards.length) || last_played.cards.length === 0){
+    if (selected.length > 0 && ((selected.length === last_played.cards.length) || last_played.cards.length === 0)){
 
       const play = this.checkValidTurn(selected, last_played)
       if (play){
         this.props.playTurn(selected, this.props.player, play)
         this.setState({selected: []})
+        setTimeout(() =>this.checkWin(), 300)
       }
       else{ (console.log('your play is smaller')) }
     }

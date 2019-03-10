@@ -17,9 +17,7 @@ class SessionsContainer extends React.Component{
 
   newSession = () =>{
     this.props.fetchNewDeck()
-    setTimeout(()=>console.log(this.props.deck), 500)
-    console.log('hi')
-    setTimeout(()=>this.props.saveDeck({game:{deck_key: this.props.deck}}), 1000)
+    setTimeout(()=>this.props.saveDeck({game:{deck_key: this.props.deck}}), 500)
   }
 
   render(){

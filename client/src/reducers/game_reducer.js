@@ -3,7 +3,7 @@ export default function gameReducer(
   state = {
     deck_id: '',
     sessions: [],
-    deck: '',//'b3wse340ezeb',
+    deck: 'b3wse340ezeb',
     hand1: [],
     hand2:[],
     player: '',
