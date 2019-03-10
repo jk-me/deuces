@@ -5,3 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+g1 = Game.create({deck_key: 'abc', p1wins: 2, p2wins: 3, total_games: 5})
+g2 = Game.create({deck_key: 'sdf', p1wins: 1, p2wins: 1, total_games: 2})
