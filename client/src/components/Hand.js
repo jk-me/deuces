@@ -126,9 +126,9 @@ class Hand extends React.Component{
   }  //rtrn 'straight', 'flush', etc
 
   checkWin = () =>{
-    debugger
+    // debugger
     if (this.props.hand.length === 0){
-      console.log(this.props.player + ' has won.')
+      this.props.gameWon(this.props.player, this.props.deck_id)
     }
   }
 

@@ -1,6 +1,7 @@
 export default function gameReducer(
 
   state = {
+    current_sess: {id:'', deck_key:'', p1wins:'',p2wins:'',},
     deck_id: '',
     sessions: [],
     deck: 'b3wse340ezeb',
@@ -17,7 +18,7 @@ export default function gameReducer(
       console.log(action.sessions)
       return {...state, sessions: action.sessions}
 
-    case 'SET_DECK':
+    case 'SET_CURRENT_SESSION':
       return{...state, deck:action.deck, deck_id: action.deck_id}
 
     case 'FETCH_NEW_DECK':

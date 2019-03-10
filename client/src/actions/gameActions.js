@@ -48,3 +48,20 @@ export function shuffleDeck(){
       .then(data => console.log('shuffled.'))
   }
 }
+
+export function gameWon(gameData, gameId){
+  let data = {
+    method: 'PATCH',
+    headers:{
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(gameData)
+  }
+  return dispatch =>{
+    fetch(`http://localhost:3001/games/${gameId}`, data)
+      .then(resp => resp.json())
+      .then(game => dispatch({type: 'UPDATE_SESSION', payload: game}))
+      // .catch(err=>err)
+  }
+}

@@ -5,13 +5,13 @@ import {fetchNewDeck, saveDeck} from '../actions/gameActions'
 
 class SessionsContainer extends React.Component{
 
-  sClick = (deck,id) =>{
-    this.props.setSession(deck,id)
+  sClick = (session) =>{
+    this.props.setSession(session)
   }
 
   renderSessions = () =>{
     return this.props.sessions.map( s => {
-      return <Session deck={s} clickFn={this.sClick} id={s.id}/>
+      return <Session session={s} sClick={this.sClick} id={s.id}/>
     })
   }
 
@@ -40,10 +40,9 @@ const mapStateToProps = state =>{
 
 const mapDispatchToProps = dispatch =>{
   return {
-    setSession: (deck,id) => dispatch({
-        type: 'SET_DECK',
-        deck: deck,
-        deck_id: id
+    setSession: (session) => dispatch({
+        type: 'SET_CURRENT_SESSION',
+        session: session
       }),
     fetchNewDeck: () => dispatch(fetchNewDeck()),
     saveDeck: (data) => dispatch(saveDeck(data))

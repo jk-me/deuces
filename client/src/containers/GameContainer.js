@@ -2,7 +2,7 @@ import React from 'react'
 import Hand from '../components/Hand'
 import SheddedPile from '../components/SheddedPile'
 import {connect} from 'react-redux'
-import {fetchGames, fetchHand, shuffleDeck} from '../actions/gameActions'
+import {fetchGames, fetchHand, shuffleDeck, gameWon} from '../actions/gameActions'
 
 class GameContainer extends React.Component{
 
@@ -41,11 +41,14 @@ class GameContainer extends React.Component{
     return (
       <div>
         <Hand
-         player='hand1'
-         current={this.props.player}
-         hand={this.props.hand1}
-         playTurn= {this.props.playTurn}
-         last_played= {this.props.last_played}/>
+          player='hand1'
+          current={this.props.player}
+          hand={this.props.hand1}
+          playTurn= {this.props.playTurn}
+          last_played= {this.props.last_played}
+          gameWon={this.props.gameWon}
+          deck_id={this.props.deck_id}
+        />
 
         <SheddedPile cards={this.props.last_played}/>
 
@@ -55,7 +58,10 @@ class GameContainer extends React.Component{
           hand={this.props.hand2}
           playTurn= {this.props.playTurn}
           last_played= {this.props.last_played}
+          gameWon={this.props.gameWon}
+          deck_id={this.props.deck_id}
         />
+
         <p> Your turn: {this.props.player} </p>
         <p> Playing session: {this.props.deck_id} </p>
 
@@ -68,11 +74,12 @@ class GameContainer extends React.Component{
 
 const mapStateToProps = state =>{
   return {
+    current_session: state.current_sess,
     deck_id: state.deck_id,
     deck: state.deck,
     hand1: state.hand1,
     hand2: state.hand2,
-    player: state.player,  //hand1 or hand2
+    player: state.player,  //current, hand1 or hand2
     last_played: state.last_played //{play:'' cards:[{card},{card}]}
   }
 }
@@ -91,7 +98,8 @@ const mapDispatchToProps = dispatch =>{
       selected: selected,
       player: player,   //hand1 or hand2
       play: play     //'single', 'flush'
-    })
+    }),
+    gameWon: (game, id) => dispatch(gameWon(game, id))
   }
 }
 

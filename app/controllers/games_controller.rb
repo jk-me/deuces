@@ -1,13 +1,13 @@
 class GamesController < ApplicationController
 
   def index
-    @games = Game.all
-    render json: @games
+    games = Game.all
+    render json: games
   end
 
   def show
-    @game = Game.find(params[:id])
-    render json: @game
+    game = Game.find(params[:id])
+    render json: game
   end
 
   def create
@@ -16,14 +16,15 @@ class GamesController < ApplicationController
   end
 
   def update
-    @game = Game.find(params[:id])
-    @game = Game.create(game_params)
+    game = Game.find(params[:id])
+    game.update(game_params)
+    render json: game
 
   end
 
   def destroy
-    @game = Game.find(params[:id])
-    @game.destroy
+    game = Game.find(params[:id])
+    game.destroy
   end
 
   private
