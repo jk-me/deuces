@@ -7,6 +7,12 @@ import SheddedPile from '../components/SheddedPile'
 class GameContainer extends React.Component{
 
   componentDidMount(){
+    // this.props.shuffle()
+    // this.props.fetchHand(1)
+    // this.props.fetchHand(2)
+  }
+
+  newGame = () =>{
     this.props.shuffle()
     this.props.fetchHand(1)
     this.props.fetchHand(2)
@@ -27,12 +33,13 @@ class GameContainer extends React.Component{
 
         <HandContainer
           player='hand2'
-          current={this.props.player} 
+          current={this.props.player}
           hand={this.props.hand2}
           playTurn= {this.props.playTurn}
           last_played= {this.props.last_played}
         />
         <p> Your turn: {this.props.player}</p>
+        <button onClick={this.newGame}>New Game</button>
       </div>
     )
   }

@@ -152,12 +152,10 @@ class HandContainer extends React.Component{
 
   renderButtons = () =>{
     if (this.props.player === this.props.current){
-      return (
-        <div>
-          <button onClick={this.playFn}>Play Selected Cards</button>
-          <button onClick={this.passFn}>Pass Turn</button>
-        </div>
-      )
+      return (<div>
+        <button onClick={this.playFn}>Play Selected Cards</button>
+        <button onClick={this.passFn}>Pass Turn</button>
+      </div>)
     }
   }
 
