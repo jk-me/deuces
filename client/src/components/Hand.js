@@ -66,7 +66,7 @@ class Hand extends React.Component{
     }
 
     else if (sel.length === 5){
-      const types = ['straight', 'full house', 'flush', 'bomb', 'straight flush']
+      const types = ['straight', 'flush', 'full house', 'bomb', 'straight flush']
 
       let sSort = sel.sort(function(a,b) {return nums.indexOf(a.value) - nums.indexOf(b.value)} )
       const sPlayType = this.fiveCardPlayType(sSort)

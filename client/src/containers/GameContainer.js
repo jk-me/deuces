@@ -12,6 +12,7 @@ class GameContainer extends React.Component{
   }
 
   determineFirst = () =>{
+    if (this.props.hand1.length === 0 || this.props.hand2.length === 0){return null}
     let nums = ['3','4','5','6','7','8','9','10','JACK','QUEEN','KING','ACE','2']
     let suits = ['DIAMONDS', 'CLUBS', 'HEARTS', 'SPADES']
     let h1 = this.props.hand1.sort((a,b) => nums.indexOf(a.value) - nums.indexOf(b.value))
@@ -28,7 +29,7 @@ class GameContainer extends React.Component{
       else if (suits.indexOf(h2[0].suit) < suits.indexOf(h1[0].suit))
         { this.props.setFirst('hand2')  }
     }
-  } //returns 'hand1' or 'hand2'
+  } //dispatches 'hand1' or 'hand2'
 
   newGame = () =>{
     let deck = this.props.deck
