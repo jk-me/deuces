@@ -64,10 +64,18 @@ class GameContainer extends React.Component{
 
             <button onClick={this.newGame}>New Game</button>
             <button onClick={this.determineFirst}>Set first player</button>
-            <p> Your turn: Player {this.props.player[4]} </p>
-            <p> P1 wins: {this.props.current_session.hand1} </p>
-            <p> P2 wins: {this.props.current_session.hand2} </p>
+            <p> Player {this.props.player[4]} turn </p>
+            
+            <div className='quick-start'>
+              <h5>Quick Start</h5>
+              <ul>
+                <li>Sessions track win/loss data. Select a session to continue playing or start a new session.</li>
+                <li>'New game' to draw hands for a new round in session.</li>
+                <li>'Set first player' to sort cards in hand and begin play.</li>
+                <li>Go to ‘About’ to see full play rules</li>
 
+              </ul>
+            </div>
           </Col>
 
           <Hand

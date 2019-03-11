@@ -23,10 +23,10 @@ class SessionsContainer extends React.Component{
   render(){
     return(
       <div>
-        <span>Sessions:</span>
+        <span>Sessions: </span>
         {this.renderSessions()}
         <button onClick={this.newSession}>New Session</button>
-        <p><span>Currently Playing:{this.props.current_sess.id}</span></p>
+        <p><span>Current Session: {this.props.current_sess.id}</span></p>
       </div>
     )
   }

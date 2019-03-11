@@ -1,38 +1,53 @@
+body{
+  background-image: url('https://imgnooz.com/sites/default/files/wallpaper/abstract/55281/black-and-red-abstraction-wallpapers-55281-2207361.jpg');
+  background-size:cover;
+}
 .App {
   text-align: center;
-  background: pink;
+  /* background: pink; */
   padding: 30px;
+  padding-left: 50px;
+  padding-right: 50px;
+
+  height: 100%;
+  color:#edf3f4;
 }
 .About {
   text-align: left;
-  background: aqua;
+  font-size: 17px;
+  font-weight: 500;
+  /* background: aqua; */
   padding: 50px;
-}
+  padding-left: 150px;
+  padding-right: 200px;
+  color:#edf3f4;
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
+.quick-start{
+  border: 2px solid #32374f;
+  margin: 5px;
+  padding-top: 5px;
+  padding-right: 5px;
+  padding-left: 5px;
 
-.App-link {
-  color: #61dafb;
+
+  /* background-image: linear-gradient(to bottom right, #2f3035, #747787) */
+
+}
+.quick-start ul{
+  text-align: left;
+  font-size: 12px;
 }
 
 .shedded{
   height: 340px;
-  background: aqua;
+  /* background: aqua; */
   padding-top: 30px;
   padding-left: 50px;
   padding-right: 50px;
-  border-color: black;
-  border: 10px;
+  margin: 10px;
+  border: 5px double #ad967c;
 }
 .center{
-  padding-top: 10px
+  padding-top: 30px
 }

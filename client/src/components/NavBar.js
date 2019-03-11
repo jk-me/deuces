@@ -4,7 +4,7 @@ import Nav from 'react-bootstrap/Nav'
 
 const NavBar = () => {
   return (
-    <Navbar>
+    <Navbar bg='dark' variant='dark'>
       <Navbar.Brand href="/">Deuces</Navbar.Brand>
       <Nav>
         <Nav.Link href='/about'>About</Nav.Link>

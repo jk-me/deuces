@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {fetchGames} from '../actions/gameActions'
+import Table from 'react-bootstrap/Table'
 
 class SessionInfo extends React.Component{
 
@@ -25,7 +26,7 @@ class SessionInfo extends React.Component{
     return(
       <div className='App'>
         <h2>Previous Game Data</h2>
-        <table>
+        <Table bordered striped variant='dark'>
           <thead>
           <tr>
             <th>Session</th>
@@ -37,7 +38,7 @@ class SessionInfo extends React.Component{
           <tbody>
           {this.renderTableRows()}
           </tbody>
-        </table>
+        </Table>
       </div>
     )
   }
