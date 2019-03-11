@@ -1,7 +1,12 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {fetchGames} from '../actions/gameActions'
 
 class SessionInfo extends React.Component{
+
+  componentDidMount(){
+    this.props.fetchGames()
+  }
 
   renderTableRows = () =>{
     return this.props.sessions.map(s =>{
@@ -18,7 +23,7 @@ class SessionInfo extends React.Component{
 
   render(){
     return(
-      <div>
+      <div className='App'>
         <h2>Previous Game Data</h2>
         <table>
           <thead>
@@ -44,4 +49,10 @@ const mapStateToProps = state =>{
   }
 }
 
-export default connect(mapStateToProps)(SessionInfo)
+const mapDispatchToProps = dispatch =>{
+  return {
+    fetchGames: () => dispatch(fetchGames()),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SessionInfo)

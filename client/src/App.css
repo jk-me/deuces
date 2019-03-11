@@ -1,5 +1,12 @@
 .App {
   text-align: center;
+  background: pink;
+  padding: 30px;
+}
+.About {
+  text-align: left;
+  background: aqua;
+  padding: 50px;
 }
 
 .App-header {
@@ -18,7 +25,14 @@
 }
 
 .shedded{
-  height: 100px;
+  height: 340px;
   background: aqua;
-  padding: 50px
+  padding-top: 30px;
+  padding-left: 50px;
+  padding-right: 50px;
+  border-color: black;
+  border: 10px;
+}
+.center{
+  padding-top: 10px
 }

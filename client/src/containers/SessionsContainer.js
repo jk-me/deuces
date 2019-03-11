@@ -23,8 +23,10 @@ class SessionsContainer extends React.Component{
   render(){
     return(
       <div>
+        <span>Sessions:</span>
         {this.renderSessions()}
         <button onClick={this.newSession}>New Session</button>
+        <p><span>Currently Playing:{this.props.current_sess.id}</span></p>
       </div>
     )
   }
@@ -33,7 +35,8 @@ class SessionsContainer extends React.Component{
 const mapStateToProps = state =>{
   return{
     sessions: state.sessions,
-    deck: state.deck
+    deck: state.deck,
+    current_sess: state.current_sess
     //[{id, deck_key, p1wins..., total_games}, {}]
   }
 }

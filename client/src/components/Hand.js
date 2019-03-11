@@ -1,5 +1,6 @@
 import React from 'react'
 import Card from '../components/Card'
+import Col from 'react-bootstrap/Col'
 
 class Hand extends React.Component{
   state = {
@@ -173,12 +174,13 @@ class Hand extends React.Component{
   render(){
     // debugger
     return(
-      <div>
+      <Col>
+          <h4>Player {this.props.player[4]}</h4>
           {this.renderCards()}
-          <p>{this.state.selected.map( c => c.code)}</p>
+          <p>{this.state.selected.map( c => c.code).join(', ')}</p>
           {this.renderButtons()}
 
-      </div>
+      </Col>
     )
   }
 }

@@ -4,6 +4,10 @@ import SessionsContainer from './SessionsContainer'
 import SheddedPile from '../components/SheddedPile'
 import {connect} from 'react-redux'
 import {fetchGames, fetchHand, shuffleDeck, gameWon} from '../actions/gameActions'
+import Col from 'react-bootstrap/Col'
+import Row from 'react-bootstrap/Row'
+
+
 
 class GameContainer extends React.Component{
 
@@ -44,38 +48,38 @@ class GameContainer extends React.Component{
   render(){
     return (
       <div className='App'>
-        <Hand
-          player='hand1'
-          current={this.props.player}
-          hand={this.props.hand1}
-          playTurn= {this.props.playTurn}
-          last_played= {this.props.last_played}
-          gameWon={this.props.gameWon}
-          session={this.props.current_session}
-        />
+        <Row>
+          <Hand
+            player='hand1'
+            current={this.props.player}
+            hand={this.props.hand1}
+            playTurn= {this.props.playTurn}
+            last_played= {this.props.last_played}
+            gameWon={this.props.gameWon}
+            session={this.props.current_session}
+          />
 
-        <SheddedPile cards={this.props.last_played}/>
+          <Col className='center'>
+            <SheddedPile cards={this.props.last_played}/>
 
-        <Hand
-          player='hand2'
-          current={this.props.player}
-          hand={this.props.hand2}
-          playTurn= {this.props.playTurn}
-          last_played= {this.props.last_played}
-          gameWon={this.props.gameWon}
-          session={this.props.current_session}
-        />
+            <button onClick={this.newGame}>New Game</button>
+            <button onClick={this.determineFirst}>Set first player</button>
+            <p> Your turn: Player {this.props.player[4]} </p>
+            <p> P1 wins: {this.props.current_session.hand1} </p>
+            <p> P2 wins: {this.props.current_session.hand2} </p>
 
-        <p> Your turn: {this.props.player} </p>
-        <p> Playing session: {this.props.current_session.id} </p>
-        <p> P1 wins: {this.props.current_session.hand1} </p>
-        <p> P2 wins: {this.props.current_session.hand2} </p>
+          </Col>
 
-
-        <button onClick={this.newGame}>New Game</button>
-        <button onClick={this.determineFirst}>Set first player</button>
-
-        <p>Sessions</p>
+          <Hand
+            player='hand2'
+            current={this.props.player}
+            hand={this.props.hand2}
+            playTurn= {this.props.playTurn}
+            last_played= {this.props.last_played}
+            gameWon={this.props.gameWon}
+            session={this.props.current_session}
+          />
+        </Row>
         <SessionsContainer />
       </div>
     )
