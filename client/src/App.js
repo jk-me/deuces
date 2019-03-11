@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-// import {connect} from 'react-redux'
 import GameContainer from './containers/GameContainer'
-import SessionsContainer from './containers/SessionsContainer'
+import {BrowserRouter as Router, Route} from 'react-router-dom'
 
 class App extends Component {
 
@@ -10,14 +9,24 @@ class App extends Component {
   // }
 
   render() {
-    console.log(this.state)
+    // console.log(this.state)
+    // return (
+    //     <>
+    //       <GameContainer/>
+    //
+    //     </>
+    // );
     return (
-      <div className="App">
-        <SessionsContainer />
-        <GameContainer />
-      </div>
+      <Router>
+        <>
+          <Route path='/' render={() => <GameContainer/>} />
+
+        </>
+      </Router>
     );
   }
 }
+// <Route exact path='/about' render{() =><About/>} />
+// <Route path='/session_info' render{() =><SessionInfo/>} />
 
 export default App;

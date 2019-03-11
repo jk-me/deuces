@@ -1,5 +1,6 @@
 import React from 'react'
 import Hand from '../components/Hand'
+import SessionsContainer from './SessionsContainer'
 import SheddedPile from '../components/SheddedPile'
 import {connect} from 'react-redux'
 import {fetchGames, fetchHand, shuffleDeck, gameWon} from '../actions/gameActions'
@@ -41,7 +42,7 @@ class GameContainer extends React.Component{
 
   render(){
     return (
-      <div>
+      <div className='App'>
         <Hand
           player='hand1'
           current={this.props.player}
@@ -72,6 +73,9 @@ class GameContainer extends React.Component{
 
         <button onClick={this.newGame}>New Game</button>
         <button onClick={this.determineFirst}>Set first player</button>
+
+        <p>Sessions</p>
+        <SessionsContainer />
       </div>
     )
   }
