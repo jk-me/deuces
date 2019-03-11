@@ -10,15 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_10_014954) do
+ActiveRecord::Schema.define(version: 2019_03_10_230747) do
 
   create_table "games", force: :cascade do |t|
     t.string "deck_key"
-    t.integer "p1wins"
-    t.string "p2wins"
-    t.integer "total_games"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer "hand1"
+    t.integer "hand2"
   end
 
 end

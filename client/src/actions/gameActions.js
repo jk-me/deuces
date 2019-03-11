@@ -41,10 +41,10 @@ export function fetchHand(num, deckstr){
   }
 }
 
-export function shuffleDeck(){
+export function shuffleDeck(deckstr){
   return dispatch =>{
     console.log('shuffling...')
-    fetch('https://deckofcardsapi.com/api/deck/b3wse340ezeb/shuffle/')
+    fetch(`https://deckofcardsapi.com/api/deck/${deckstr}/shuffle/`)
       .then(data => console.log('shuffled.'))
   }
 }

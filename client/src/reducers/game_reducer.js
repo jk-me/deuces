@@ -1,9 +1,9 @@
 export default function gameReducer(
 
   state = {
-    current_sess: {id:'', deck_key:'', p1wins:'',p2wins:'',},
+    current_sess: {id:'', deck_key:'', hand1:'',hand2:''},
     sessions: [],
-    deck: 'b3wse340ezeb',
+    deck: '',
     hand1: [],
     hand2:[],
     player: '',
@@ -16,7 +16,8 @@ export default function gameReducer(
     case 'UPDATE_SESSION':
       return {...state,
         current_sess: action.payload,
-        sessions:[...state.sessions.filter( el => el.id !==action.payload.id), action.payload]
+        sessions:[...state.sessions.filter( el => el.id !==action.payload.id), action.payload],
+        player:''
       }
 
     case 'FETCH_SESSIONS':
@@ -32,12 +33,11 @@ export default function gameReducer(
     case 'SAVE_NEW_SESSION':
       return{...state,
         sessions:[...state.sessions, action.payload],
-        deck_id: action.payload.id,
-        deck: action.payload.deck_key
+        current_sess:action.payload
       }
 
     case 'DRAW_HAND':
-      return {...state, [action.num]: action.cards, player:''}
+      return {...state, [action.num]: action.cards, player:'', last_played:{play: '', cards: []}}
 
     case 'SET_FIRST_PLAYER':
       return {...state, player: action.player}
