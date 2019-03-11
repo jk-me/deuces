@@ -1,14 +1,17 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import Navbar from 'react-bootstrap/Navbar'
+import Nav from 'react-bootstrap/Nav'
 
 const NavBar = () => {
   return (
-    <div className='navbar'>
-      <NavLink to='/'>Home</NavLink> | 
-      <NavLink to='/about'>About</NavLink> |
-      <NavLink to='/game_data'>Game Data</NavLink>
-
-    </div>
+    <Navbar>
+      <Navbar.Brand href="/">Deuces</Navbar.Brand>
+      <Nav>
+        <Nav.Link href='/about'>About</Nav.Link>
+        <Nav.Link href='/game_data'>Session Data</Nav.Link>
+      </Nav>
+    </Navbar>
   );
 };
 
