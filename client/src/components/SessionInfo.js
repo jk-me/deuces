@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {fetchGames} from '../actions/gameActions'
 import Table from 'react-bootstrap/Table'
+import SessionTableRow from './SessionTableRow'
 
 class SessionInfo extends React.Component{
 
@@ -12,12 +13,7 @@ class SessionInfo extends React.Component{
   renderTableRows = () =>{
     return this.props.sessions.map(s =>{
       return (
-        <tr>
-          <th>{s.id}</th>
-          <th>{s.hand1*1}</th>
-          <th>{s.hand2*1}</th>
-          <th>{s.hand1 + s.hand2}</th>
-        </tr>
+        <SessionTableRow s={s}/>
       )
     })
   }
@@ -33,6 +29,7 @@ class SessionInfo extends React.Component{
             <th>Player 1 wins</th>
             <th>Player 2 wins</th>
             <th>Total games</th>
+            
           </tr>
           </thead>
           <tbody>

@@ -43,8 +43,8 @@ body{
   height: 340px;
   /* background: aqua; */
   padding-top: 30px;
-  padding-left: 50px;
-  padding-right: 50px;
+  padding-left: 10px;
+  padding-right: 10px;
   margin: 10px;
   border: 5px double #ad967c;
   visibility: visible;

@@ -127,13 +127,15 @@ class Hand extends React.Component{
   }  //rtrn 'straight', 'flush', etc
 
   checkWin = () =>{
-    // debugger
     if (this.props.hand.length === 0){
+      console.log('A')
       this.props.gameWon({
         game:{
           [this.props.player]:this.props.session[this.props.player]+1}
         },
-        this.props.session.id)
+        this.props.session.id
+      )
+      console.log('B')
     }
   }
 
@@ -158,7 +160,7 @@ class Hand extends React.Component{
   passFn = () =>{
     this.props.playTurn([],this.props.player, '')
     this.showHide('play')
-    
+
   }
 
   renderCards = () =>{

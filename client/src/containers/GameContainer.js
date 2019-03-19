@@ -45,6 +45,12 @@ class GameContainer extends React.Component{
     }
   }
 
+  showWinner = () =>{
+      if (this.props.winner){
+        return(<p>Winner: {this.props.winner}</p>)
+      }
+  }
+
   render(){
     return (
       <div className='App'>
@@ -65,7 +71,8 @@ class GameContainer extends React.Component{
             <button onClick={this.newGame}>New Game</button>
             <button onClick={this.determineFirst}>Set first player</button>
             <p> Player {this.props.player[4]} turn </p>
-            
+            {this.showWinner()}
+
             <div className='quick-start'>
               <h5>Quick Start</h5>
               <ul>
@@ -101,7 +108,8 @@ const mapStateToProps = state =>{
     hand1: state.hand1,
     hand2: state.hand2,
     player: state.player,  //current, hand1 or hand2
-    last_played: state.last_played //{play:'' cards:[{card},{card}]}
+    last_played: state.last_played, //{play:'' cards:[{card},{card}]}
+    winner: state.winner
   }
 }
 

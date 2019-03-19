@@ -7,17 +7,20 @@ export default function gameReducer(
     hand1: [],
     hand2:[],
     player: '',
-    last_played: {play: '', cards: []}
+    last_played: {play: '', cards: []},
+    winner:''
   },
   action){
 
   console.log(action)
   switch (action.type){
     case 'UPDATE_SESSION':
+    const winner = state.player === 'hand1' ? 'Player 2' : 'Player 1'
       return {...state,
         current_sess: action.payload,
         sessions:[...state.sessions.filter( el => el.id !==action.payload.id), action.payload],
-        player:''
+        player:'',
+        winner:winner
       }
 
     case 'FETCH_SESSIONS':
@@ -37,7 +40,7 @@ export default function gameReducer(
       }
 
     case 'DRAW_HAND':
-      return {...state, [action.num]: action.cards, player:'', last_played:{play: '', cards: []}}
+      return {...state, [action.num]: action.cards, player:'', last_played:{play: '', cards: []}, winner:''}
 
     case 'SET_FIRST_PLAYER':
       return {...state, player: action.player}
