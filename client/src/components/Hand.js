@@ -145,6 +145,7 @@ class Hand extends React.Component{
 
       const play = this.checkValidTurn(selected, last_played)
       if (play){
+        this.showHide('play')
         this.props.playTurn(selected, this.props.player, play)
         this.setState({selected: []})
         setTimeout(() =>this.checkWin(), 300)
@@ -156,10 +157,12 @@ class Hand extends React.Component{
 
   passFn = () =>{
     this.props.playTurn([],this.props.player, '')
+    this.showHide('play')
+    
   }
 
   renderCards = () =>{
-    return this.props.hand.map( card => {return <Card card={card} clickFn={this.cardClick}/>})
+    return this.props.hand.map( card => {return <Card card={card} player={this.props.player} clickFn={this.cardClick}/>})
   }
 
   renderButtons = () =>{
@@ -167,18 +170,39 @@ class Hand extends React.Component{
       return (<div>
         <button onClick={this.playFn}>Play Selected Cards</button>
         <button onClick={this.passFn}>Pass Turn</button>
+        <button onClick={this.showHide}>
+          Show/Hide
+        </button>
       </div>)
+    }
+  }
+  showHide = (pie) =>{
+    let p = this.props.player
+    let cards = document.getElementsByClassName(p);
+
+    if (pie ==='play'){
+      for (const x of cards){
+        x.style.visibility = "";
+      }
+      return ''
+    }
+    for (const x of cards){
+      if (x.style.visibility === "") {
+        x.style.visibility = "visible";
+      } else {
+        x.style.visibility = "";
+      }
     }
   }
 
   render(){
-    // debugger
     return(
       <Col>
           <h4>Player {this.props.player[4]}</h4>
           {this.renderCards()}
           <p>{this.state.selected.map( c => c.code).join(', ')}</p>
           {this.renderButtons()}
+
 
       </Col>
     )

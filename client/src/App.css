@@ -47,7 +47,19 @@ body{
   padding-right: 50px;
   margin: 10px;
   border: 5px double #ad967c;
+  visibility: visible;
 }
 .center{
   padding-top: 30px
+}
+
+.hand1, .hand2{
+  visibility: hidden;
+  margin: 2px;
+}
+
+.cardBorder{
+  border: 1px solid #ad967c;
+  height: 105px;
+  display: inline-block;
 }
