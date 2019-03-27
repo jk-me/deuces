@@ -6,7 +6,8 @@ import {connect} from 'react-redux'
 import {fetchGames, fetchHand, shuffleDeck, gameWon} from '../actions/gameActions'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
-
+// import ButtonGroup from 'react-bootstrap/ButtonGroup'
+import Button from 'react-bootstrap/Button'
 
 
 class GameContainer extends React.Component{
@@ -47,7 +48,7 @@ class GameContainer extends React.Component{
 
   showWinner = () =>{
       if (this.props.winner){
-        return(<p>Winner: {this.props.winner}</p>)
+        return(<p>Winner: {this.props.winner} </p>)
       }
   }
 
@@ -67,9 +68,8 @@ class GameContainer extends React.Component{
 
           <Col className='center'>
             <SheddedPile cards={this.props.last_played}/>
-
-            <button onClick={this.newGame}>New Game</button>
-            <button onClick={this.determineFirst}>Set first player</button>
+            <Button variant='outline-light' onClick={this.newGame}>New Game</Button>
+            <Button variant='outline-light' onClick={this.determineFirst}>Set first player</Button>
             <p> Player {this.props.player[4]} turn </p>
             {this.showWinner()}
 
@@ -77,8 +77,8 @@ class GameContainer extends React.Component{
               <h5>Quick Start</h5>
               <ul>
                 <li>Sessions track win/loss data. Select a session to continue playing or start a new session.</li>
-                <li>'New game' to draw hands for a new round in session.</li>
-                <li>'Set first player' to sort cards in hand and begin play.</li>
+                <li>'New game' to begin a new round in session.</li>
+                <li>'Set first player' to begin play.</li>
                 <li>Go to ‘About’ to see full play rules</li>
 
               </ul>

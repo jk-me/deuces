@@ -1,6 +1,8 @@
 import React from 'react'
 import Card from '../components/Card'
 import Col from 'react-bootstrap/Col'
+import ButtonGroup from 'react-bootstrap/ButtonGroup'
+import Button from 'react-bootstrap/Button'
 
 class Hand extends React.Component{
   state = {
@@ -167,13 +169,15 @@ class Hand extends React.Component{
 
   renderButtons = () =>{
     if (this.props.player === this.props.current){
-      return (<div>
-        <button onClick={this.playFn}>Play Selected Cards</button>
-        <button onClick={this.passFn}>Pass Turn</button>
-        <button onClick={this.showHide}>
-          Show/Hide
-        </button>
-      </div>)
+      return (
+        <div>
+        <p><ButtonGroup>
+          <Button variant='outline-info' onClick={this.playFn}>Play Selected Cards</Button>
+          <Button variant='outline-info' onClick={this.showHide}>Show/Hide</Button>
+        </ButtonGroup></p>
+        <p><Button variant='outline-info' onClick={this.passFn}>Pass Turn</Button></p>
+        </div>
+      )
     }
   }
   showHide = (pie) =>{
@@ -198,13 +202,10 @@ class Hand extends React.Component{
   render(){
     return(
       <Col>
-      
           <h4>Player {this.props.player[4]}</h4>
           {this.renderCards()}
           <p>{this.state.selected.map( c => c.code).join(', ')}</p>
           {this.renderButtons()}
-
-
       </Col>
     )
   }

@@ -1,4 +1,5 @@
 import React from 'react'
+import Button from 'react-bootstrap/Button'
 
 class Session extends React.Component{
   click = () =>{
@@ -6,7 +7,7 @@ class Session extends React.Component{
   }
   render(){
     return (
-        <button onClick={this.click}> Session {this.props.session.id} </button>
+        <Button variant='outline-secondary' onClick={this.click}> Session {this.props.session.id} </Button>
     )
   }
 }
