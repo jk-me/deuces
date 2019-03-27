@@ -50,7 +50,6 @@ export function shuffleDeck(deckstr){
 }
 
 export function gameWon(gameData, gameId){
-  console.log('C')
   let data = {
     method: 'PATCH',
     headers:{
@@ -63,9 +62,7 @@ export function gameWon(gameData, gameId){
     fetch(`http://localhost:3001/games/${gameId}`, data)
       .then(resp => resp.json())
       .then(game => {
-        console.log('D')
         dispatch({type: 'UPDATE_SESSION', payload: game})})
       // .catch(err=>err)
   }
-  console.log('E')
 }

@@ -128,14 +128,12 @@ class Hand extends React.Component{
 
   checkWin = () =>{
     if (this.props.hand.length === 0){
-      console.log('A')
       this.props.gameWon({
         game:{
           [this.props.player]:this.props.session[this.props.player]+1}
         },
         this.props.session.id
       )
-      console.log('B')
     }
   }
 
@@ -200,6 +198,7 @@ class Hand extends React.Component{
   render(){
     return(
       <Col>
+      
           <h4>Player {this.props.player[4]}</h4>
           {this.renderCards()}
           <p>{this.state.selected.map( c => c.code).join(', ')}</p>
