@@ -6,7 +6,7 @@ import {connect} from 'react-redux'
 import {fetchGames, fetchHand, shuffleDeck, gameWon} from '../actions/gameActions'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
-// import ButtonGroup from 'react-bootstrap/ButtonGroup'
+import ButtonGroup from 'react-bootstrap/ButtonGroup'
 import Button from 'react-bootstrap/Button'
 
 
@@ -68,8 +68,10 @@ class GameContainer extends React.Component{
 
           <Col className='center'>
             <SheddedPile cards={this.props.last_played}/>
+            <ButtonGroup>
             <Button variant='outline-light' onClick={this.newGame}>New Game</Button>
             <Button variant='outline-light' onClick={this.determineFirst}>Set first player</Button>
+            </ButtonGroup>
             <p> Player {this.props.player[4]} turn </p>
             {this.showWinner()}
 
