@@ -24,10 +24,6 @@ $foreman start -p 3000
 
 Then navigate to localhost:3000 in your web browser.
 
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
 ## Author
 
 * **Jenny Kam**
@@ -36,4 +32,4 @@ Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c6
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.txt) file for details
