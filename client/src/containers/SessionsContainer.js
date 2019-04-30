@@ -9,6 +9,7 @@ class SessionsContainer extends React.Component{
 
   sClick = (session) =>{
     this.props.setSession(session)
+    this.props.fetchNewDeck()
   }
 
   renderSessions = () =>{
@@ -47,7 +48,7 @@ const mapStateToProps = state =>{
 const mapDispatchToProps = dispatch =>{
   return {
     setSession: (session) => dispatch({
-        type: 'SET_CURRENT_SESSION',
+        type: 'SET_SESSION',
         session: session
       }),
     fetchNewDeck: () => dispatch(fetchNewDeck()),

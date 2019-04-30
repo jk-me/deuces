@@ -27,8 +27,10 @@ export default function gameReducer(
       console.log(action.sessions)
       return {...state, sessions: action.sessions}
 
-    case 'SET_CURRENT_SESSION':
-      return{...state, deck:action.session.deck_key, current_sess: action.session}
+    case 'SET_SESSION':
+      return{...state,
+        // deck:action.session.deck_key, 
+        current_sess: action.session}
 
     case 'FETCH_NEW_DECK':
       return{...state, deck:action.deck}
