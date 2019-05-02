@@ -106,7 +106,7 @@ class Hand extends React.Component{
       }
     }
   }
-
+    //returns play type ('single', etc) or true when last play empty
   fiveCardPlayType = (s) =>{
     const sSplit = {vals: s.map(c => c.value ), suits: s.map(c => c.suit)}
     const nums = this.nums
@@ -131,7 +131,7 @@ class Hand extends React.Component{
   checkWin = () =>{
     if (this.props.hand.length === 0){
       this.props.gameWon({
-        game:{
+        game:{//thishand: session[hand]+1
           [this.props.player]:this.props.session[this.props.player]+1}
         },
         this.props.session.id
@@ -146,7 +146,7 @@ class Hand extends React.Component{
     if (selected.length > 0 && ((selected.length === last_played.cards.length) || last_played.cards.length === 0)){
 
       const play = this.checkValidTurn(selected, last_played)
-      if (play){
+      if (play){  //if play is true/valid
         this.showHide('play')
         this.props.playTurn(selected, this.props.player, play)
         this.setState({selected: []})

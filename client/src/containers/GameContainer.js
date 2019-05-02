@@ -34,7 +34,7 @@ class GameContainer extends React.Component{
       else if (suits.indexOf(h2[0].suit) < suits.indexOf(h1[0].suit))
         { this.props.setFirst('hand2')  }
     }
-  } //dispatches 'hand1' or 'hand2'
+  } //dispatches setFirst() with 'hand1' or 'hand2'
 
   newGame = () =>{
     let deck = this.props.deck
