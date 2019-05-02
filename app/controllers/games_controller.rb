@@ -30,6 +30,6 @@ class GamesController < ApplicationController
   private
 
   def game_params
-    params.require(:game).permit(:deck_key, :hand1, :hand2, :total_games)
+    params.require(:game).permit(:hand1, :hand2, :total_games)
   end
 end

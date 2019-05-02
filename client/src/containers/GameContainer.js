@@ -3,7 +3,7 @@ import Hand from '../components/Hand'
 import SessionsContainer from './SessionsContainer'
 import SheddedPile from '../components/SheddedPile'
 import {connect} from 'react-redux'
-import {fetchGames, fetchHand, shuffleDeck, gameWon} from '../actions/gameActions'
+import {fetchGames, fetchHand, shuffleDeck, gameWon, fetchNewDeck} from '../actions/gameActions'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import ButtonGroup from 'react-bootstrap/ButtonGroup'
@@ -14,6 +14,7 @@ class GameContainer extends React.Component{
 
   componentDidMount(){
     this.props.fetchGames()
+    this.props.fetchNewDeck()
   }
 
   determineFirst = () =>{
@@ -117,6 +118,7 @@ const mapStateToProps = state =>{
 
 const mapDispatchToProps = dispatch =>{
   return {
+    fetchNewDeck: () => dispatch(fetchNewDeck()),
     fetchGames: () => dispatch(fetchGames()),
     fetchHand: (num, deck) => dispatch(fetchHand(num, deck)),
     shuffle: (deck) => dispatch(shuffleDeck(deck)),

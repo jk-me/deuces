@@ -10,10 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_10_230747) do
+ActiveRecord::Schema.define(version: 2019_05_02_215627) do
 
   create_table "games", force: :cascade do |t|
-    t.string "deck_key"
     t.integer "hand1"
     t.integer "hand2"
   end

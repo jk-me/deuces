@@ -9,7 +9,6 @@ class SessionsContainer extends React.Component{
 
   sClick = (session) =>{
     this.props.setSession(session)
-    this.props.fetchNewDeck()
   }
 
   renderSessions = () =>{
@@ -20,7 +19,7 @@ class SessionsContainer extends React.Component{
 
   newSession = () =>{
     this.props.fetchNewDeck()
-    setTimeout(()=>this.props.saveDeck({game:{deck_key: this.props.deck}}), 500)
+    setTimeout(()=>this.props.saveDeck({game:{hand1: 0, hand2: 0}}), 500)
   }
 
   render(){
