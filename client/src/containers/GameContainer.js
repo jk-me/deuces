@@ -38,12 +38,13 @@ class GameContainer extends React.Component{
   } //dispatches setFirst() with 'hand1' or 'hand2'
 
   newGame = () =>{
+    let session = this.props.current_session.id
     let deck = this.props.deck
-    if (deck){
+    if (session){
       this.props.shuffle(deck)
       console.log(deck)
-      this.props.fetchHand(1, deck)
-      this.props.fetchHand(2, deck)
+      setTimeout(()=>this.props.fetchHand(1, deck), 500)
+      setTimeout(()=>this.props.fetchHand(2, deck), 500)
     }
   }
 

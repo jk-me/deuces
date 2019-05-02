@@ -11,7 +11,7 @@ export default function gameReducer(
     winner:''
   },
   action){
-
+  
   console.log(action)
   switch (action.type){
     case 'UPDATE_SESSION':
@@ -29,7 +29,9 @@ export default function gameReducer(
 
     case 'SET_SESSION':
       return{...state,
-        // deck:action.session.deck_key, 
+        // deck:action.session.deck_key,
+        hand1: [],
+        hand2:[],
         current_sess: action.session}
 
     case 'FETCH_NEW_DECK':
@@ -52,7 +54,7 @@ export default function gameReducer(
       console.log(next_player)
       // debugger
       return {...state,
-        [action.player]: state[action.player].filter( el => !action.selected.includes(el)),
+        [action.player]:state[action.player].filter( el => !action.selected.includes(el)),
         last_played: {play: action.play, cards:[...action.selected]},
         player: next_player
       }

@@ -18,7 +18,10 @@ class SessionsContainer extends React.Component{
   }
 
   newSession = () =>{
-    setTimeout(()=>this.props.saveDeck({game:{hand1: 0, hand2: 0}}), 500)
+    this.props.saveDeck(
+      {game:
+        {hand1: 0, hand2: 0}
+      })
   }
 
   render(){
@@ -28,7 +31,10 @@ class SessionsContainer extends React.Component{
           {this.renderSessions()}
           <Button variant='outline-secondary' onClick={this.newSession}>New Session</Button>
         </ButtonGroup>
-        <p><span>Current Session: {this.props.current_sess.id}</span></p>
+        <p>
+          <span>Current Session: {this.props.current_sess.id}
+          </span>
+        </p>
       </div>
     )
   }
