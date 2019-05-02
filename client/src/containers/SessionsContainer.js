@@ -1,7 +1,7 @@
 import React from 'react'
 import Session from '../components/Session'
 import {connect} from 'react-redux'
-import {fetchNewDeck, saveDeck} from '../actions/gameActions'
+import {saveDeck} from '../actions/gameActions'
 import ButtonGroup from 'react-bootstrap/ButtonGroup'
 import Button from 'react-bootstrap/Button'
 
@@ -18,7 +18,6 @@ class SessionsContainer extends React.Component{
   }
 
   newSession = () =>{
-    this.props.fetchNewDeck()
     setTimeout(()=>this.props.saveDeck({game:{hand1: 0, hand2: 0}}), 500)
   }
 
@@ -50,7 +49,6 @@ const mapDispatchToProps = dispatch =>{
         type: 'SET_SESSION',
         session: session
       }),
-    fetchNewDeck: () => dispatch(fetchNewDeck()),
     saveDeck: (data) => dispatch(saveDeck(data))
   }
 }
