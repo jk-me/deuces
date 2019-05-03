@@ -5,8 +5,15 @@ import About from './components/About'
 import SessionInfo from './components/SessionInfo'
 import NavBar from './components/NavBar'
 import {BrowserRouter as Router, Route} from 'react-router-dom'
+import {connect} from 'react-redux'
+import {fetchNewDeck} from './actions/gameActions'
+
 
 class App extends Component {
+
+  componentDidMount(){
+    this.props.fetchNewDeck()
+  }
 
   render() {
     return (
@@ -22,5 +29,10 @@ class App extends Component {
   }
 }
 
+const mapDispatchToProps = dispatch =>{
+  return {
+    fetchNewDeck: () => dispatch(fetchNewDeck()),
+  }
+}
 
-export default App;
+export default connect(null,mapDispatchToProps) (App);
