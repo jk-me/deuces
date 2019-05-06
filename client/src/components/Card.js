@@ -7,7 +7,7 @@ class Card  extends React.Component{
   render(){
     return (
       <span className='cardBorder'>
-        <img className={this.props.player} src={this.props.card.image} alt='' height='100' onClick={this.click}/>
+        <img className={'card '+ this.props.player} src={this.props.card.image} alt='' height='100' onClick={this.click}/>
       </span>
     )
   }

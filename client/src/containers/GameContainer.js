@@ -45,6 +45,10 @@ class GameContainer extends React.Component{
       setTimeout(()=>this.props.fetchHand(1, deck), 500)
       setTimeout(()=>this.props.fetchHand(2, deck), 500)
     }
+    let cards = document.getElementsByClassName('card');
+    for (const x of cards){
+      x.style.visibility = "";
+    }
   }
 
   showWinner = () =>{
