@@ -19,7 +19,7 @@ $bundle install
 $rake db:migrate
 $cd client && npm install
 $cd ..
-$foreman start -p 3000
+$rake start
 ```
 
 Then navigate to localhost:3000 in your web browser.
