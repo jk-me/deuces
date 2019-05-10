@@ -29,7 +29,7 @@ class SessionInfo extends React.Component{
             <th>Player 1 wins</th>
             <th>Player 2 wins</th>
             <th>Total games</th>
-            
+            <th>Remove session</th>
           </tr>
           </thead>
           <tbody>
