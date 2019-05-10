@@ -66,3 +66,20 @@ export function gameWon(gameData, gameId){
       // .catch(err=>err)
   }
 }
+
+export function deleteSess(gameId){
+  let data = {
+    method: 'DELETE',
+    headers:{
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }
+  }
+  return dispatch =>{
+    fetch(`http://localhost:3001/games/${gameId}`, data)
+    .then(resp => resp.json())
+    .then(games =>{
+      dispatch({type: 'FETCH_SESSIONS', sessions:games})
+    })
+  }
+}
