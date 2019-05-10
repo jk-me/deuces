@@ -5,7 +5,9 @@ import Button from 'react-bootstrap/Button'
 class SessionTableRow  extends React.Component{
 
   click = () =>{
-    this.props.deleteSess(this.props.s.id)
+    let id = this.props.s.id
+    console.log(id)
+    this.props.deleteSess(id)
   }
 
   render(){

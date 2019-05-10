@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {fetchGames} from '../actions/gameActions'
+import {fetchGames, deleteSess} from '../actions/gameActions'
 import Table from 'react-bootstrap/Table'
 import SessionTableRow from './SessionTableRow'
 
@@ -13,7 +13,7 @@ class SessionInfo extends React.Component{
   renderTableRows = () =>{
     return this.props.sessions.map(s =>{
       return (
-        <SessionTableRow s={s}/>
+        <SessionTableRow s={s} deleteSess={this.props.deleteSess}/>
       )
     })
   }
@@ -50,6 +50,7 @@ const mapStateToProps = state =>{
 const mapDispatchToProps = dispatch =>{
   return {
     fetchGames: () => dispatch(fetchGames()),
+    deleteSess: (id) => dispatch(deleteSess(id))
   }
 }
 
