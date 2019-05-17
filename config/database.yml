@@ -21,7 +21,7 @@ development:
 test:
   <<: *default
   # database: db/test.sqlite3
-  database: db/test
+  database: db/testpg
 
 production:
   <<: *default
