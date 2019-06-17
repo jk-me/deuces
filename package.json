@@ -1,0 +1,13 @@
+{
+  "name": "deuces",
+  "license": "MIT",
+  "engines": {
+    "node": "11.10.0",
+    "yarn": "1.17.0"
+  },
+  "scripts": {
+    "build": "yarn --cwd client install && yarn --cwd client build",
+    "deploy": "cp -a client/build/. public/",
+    "heroku-postbuild": "yarn build && yarn deploy"
+  }
+}
