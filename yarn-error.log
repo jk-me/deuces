@@ -1,0 +1,48 @@
+Arguments: 
+  /Users/jennykam/.nvm/versions/node/v11.10.0/bin/node /usr/local/Cellar/yarn/1.17.0/libexec/bin/yarn.js add bootstrap/dist/css/bootstrap.min.css
+
+PATH: 
+  /Users/jennykam/.nvm/versions/node/v11.10.0/bin:/Users/jennykam/.rvm/gems/ruby-2.5.1/bin:/Users/jennykam/.rvm/gems/ruby-2.5.1@global/bin:/Users/jennykam/.rvm/rubies/ruby-2.5.1/bin:/Users/jennykam/.rvm/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/Postgres.app/Contents/Versions/latest/bin
+
+Yarn version: 
+  1.17.0
+
+Node version: 
+  11.10.0
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/bootstrap%2fdist/css/bootstrap.min.css: Request "https://registry.yarnpkg.com/bootstrap%2fdist/css/bootstrap.min.css" returned a 405
+      at Request.params.callback [as _callback] (/usr/local/Cellar/yarn/1.17.0/libexec/lib/cli.js:66832:18)
+      at Request.self.callback (/usr/local/Cellar/yarn/1.17.0/libexec/lib/cli.js:140439:22)
+      at Request.emit (events.js:197:13)
+      at Request.<anonymous> (/usr/local/Cellar/yarn/1.17.0/libexec/lib/cli.js:141411:10)
+      at Request.emit (events.js:197:13)
+      at IncomingMessage.<anonymous> (/usr/local/Cellar/yarn/1.17.0/libexec/lib/cli.js:141333:12)
+      at Object.onceWrapper (events.js:285:13)
+      at IncomingMessage.emit (events.js:202:15)
+      at endReadableNT (_stream_readable.js:1129:12)
+      at processTicksAndRejections (internal/process/next_tick.js:76:17)
+
+npm manifest: 
+  {
+    "name": "deuces",
+    "license": "MIT",
+    "engines": {
+      "node": "11.10.0",
+      "yarn": "1.17.0"
+    },
+    "scripts": {
+      "build": "yarn --cwd client install && yarn --cwd client build",
+      "deploy": "cp -a client/build/. public/",
+      "heroku-postbuild": "yarn build && yarn deploy"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
