@@ -1,6 +1,8 @@
+const apiurl = 'http://localhost:3001'
+
 export function fetchGames(){
   return dispatch =>{
-    fetch('http://localhost:3001/games')
+    fetch('/games')
       .then(resp => resp.json())
       .then(data => dispatch({type:'FETCH_SESSIONS', sessions: data}))
   }
@@ -24,7 +26,7 @@ export function saveDeck(deckData){
     body: JSON.stringify(deckData)
   }
   return dispatch=>{
-    fetch('http://localhost:3001/games', data)
+    fetch('/games', data)
       .then(resp => resp.json())
       .then(deck => dispatch({type: 'SAVE_NEW_SESSION', payload: deck}))
       .catch(err=>err)
@@ -59,7 +61,7 @@ export function gameWon(gameData, gameId){
     body: JSON.stringify(gameData)
   }
   return dispatch =>{
-    fetch(`http://localhost:3001/games/${gameId}`, data)
+    fetch(`/games/${gameId}`, data)
       .then(resp => resp.json())
       .then(game => {
         dispatch({type: 'UPDATE_SESSION', payload: game})})
@@ -76,7 +78,7 @@ export function deleteSess(gameId){
     }
   }
   return dispatch =>{
-    fetch(`http://localhost:3001/games/${gameId}`, data)
+    fetch(`/games/${gameId}`, data)
     .then(resp => resp.json())
     .then(games =>{
       dispatch({type: 'FETCH_SESSIONS', sessions:games})
