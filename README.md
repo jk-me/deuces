@@ -19,10 +19,11 @@ This app is now deployed on heroku at [Deuces](https://deuces-card-game.herokuap
 To deploy the app locally, run the following commands in your terminal after cloning this repository to your local environment and navigating to its root directory. You will also need to change the Procfile to work with Foreman, as the current one works with heroku.
 
 ```
-//Procfile
+//Procfile (replace all with code below)
 web: sh -c 'cd client && npm start'
 api: bundle exec rails s -p 3001
 
+//In terminal:
 $bundle install
 $rake db:migrate
 $cd client && npm install
