@@ -16,7 +16,7 @@ This app is built on the ruby gems listed in the Gemfile, and npm packages liste
 
 This app is now deployed on heroku at [Deuces](https://deuces-card-game.herokuapp.com/)
 
-To deploy the app locally, run the following commands in your terminal after cloning this repository to your local environment and navigating to its root directory. You will also need to change the Procfile to work with Foreman, as the current one works with heroku.
+To deploy the app locally, run the following commands in your terminal after cloning this repository to your local environment and navigating to its root directory. You will also need to change the Procfie to work locally, as the current one is used for deployment.
 
 ```
 //Procfile (replace all with code below)
