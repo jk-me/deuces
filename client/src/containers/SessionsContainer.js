@@ -12,6 +12,7 @@ class SessionsContainer extends React.Component{
   }
 
   renderSessions = () =>{
+    this.props.sessions.sort((a,b) =>{ return a.id - b.id })
     return this.props.sessions.map( s => {
       return <Session session={s} sClick={this.sClick} id={s.id}/>
     })

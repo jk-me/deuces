@@ -11,11 +11,17 @@ class SessionInfo extends React.Component{
   }
 
   renderTableRows = () =>{
+    this.props.sessions.sort((a,b) =>{ return a.id - b.id})
     return this.props.sessions.map(s =>{
       return (
         <SessionTableRow s={s} deleteSess={this.props.deleteSess}/>
       )
     })
+    // return this.props.sessions.map(s =>{
+    //   return (
+    //     <SessionTableRow s={s} deleteSess={this.props.deleteSess}/>
+    //   )
+    // })
   }
 
   render(){
