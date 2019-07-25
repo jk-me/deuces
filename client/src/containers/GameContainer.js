@@ -57,6 +57,14 @@ class GameContainer extends React.Component{
       }
   }
 
+  showPlayer = () =>{
+    if (this.props.player){
+      return(
+        <p> Player {this.props.player[4]} turn </p>
+      )
+    }
+  }
+
   render(){
     return (
       <div className='App'>
@@ -83,7 +91,7 @@ class GameContainer extends React.Component{
               </Button>
             </ButtonGroup>
 
-            <p> Player {this.props.player[4]} turn </p>
+            {this.showPlayer()}
             {this.showWinner()}
 
 
@@ -98,6 +106,7 @@ class GameContainer extends React.Component{
             gameWon={this.props.gameWon}
             session={this.props.current_session}
           />
+
         </Row>
         <div className='quick-start'>
           <div>

@@ -171,7 +171,7 @@ class Hand extends React.Component{
     if (this.props.player === this.props.current){
       return (
         <div>
-          <span>
+          <div>
             <ButtonGroup>
               <Button className='button' variant='outline-info' onClick={this.playFn}>
                 Play Selected
@@ -180,12 +180,12 @@ class Hand extends React.Component{
                 Show/Hide
               </Button>
             </ButtonGroup>
-          </span>
-          <span>
+          </div>
+          <div>
             <Button className='button' variant='outline-info' onClick={this.passFn}>
               Pass Turn
             </Button>
-          </span>
+          </div>
           <p></p>
         </div>
       )
