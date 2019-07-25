@@ -2,6 +2,7 @@ body{
   /* background-image: linear-gradient(to bottom right, #660001, black); */
   background-image: url(./ever-wild-unsplash.jpg);
   background-size:cover;
+  font-size: 100%;
 }
 .App {
   text-align: center;
@@ -18,26 +19,31 @@ body{
   font-size: 17px;
   font-weight: 500;
   /* background: aqua; */
-  padding: 50px;
-  padding-left: 150px;
-  padding-right: 200px;
+  padding-top: 3%;
+  /* width: 75%; */
+  padding-left: 10%;
+  padding-right: 10%;
   color:#edf3f4;
 
 }
 .quick-start{
+  text-align: center;
+
+}
+.quick-start div{
   border: 2px solid #32374f;
   margin: 5px;
   padding-top: 5px;
   padding-right: 5px;
   padding-left: 5px;
-
-
+  width: 40%;
+  display: inline-block;
   /* background-image: linear-gradient(to bottom right, #2f3035, #747787) */
 
 }
 .quick-start ul{
   text-align: left;
-  font-size: 12px;
+  font-size: .8em;
 }
 
 .shedded{
@@ -63,4 +69,75 @@ body{
   border: 1px solid #ad967c;
   height: 105px;
   display: inline-block;
+}
+
+.card{
+  height: 100px;
+}
+@media only screen and (max-width: 900px){
+  .App{
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 10px;
+  }
+  .card{
+    height: 50px;
+  }
+  .cardBorder{
+    height: 55px;
+  }
+  .shedded{
+    height: 200px;
+    padding-top: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin: 5px;
+  }
+  .button{
+    font-size: .65em;
+    /* padding: 0px; */
+    /* padding-top: 5px; */
+
+  }
+  .quick-start ul{
+    padding-left: 12px;
+    font-size: .6em;
+  }
+  .quick-start h5{
+    font-size: 1em;
+  }
+  .quick-start div{
+    width: 100%;
+  }
+  .col{
+    padding-left: 0px;
+    padding-right:0px;
+  }
+  .center.col{
+    padding-top: 20px;
+  }
+  h4{
+    font-size: 1em;
+  }
+  .navbar{
+    padding-bottom: 0px;
+    padding-top: 0px;
+  }
+  .nav-link{
+    font-size: .8em;
+    padding-bottom: 4px;
+  }
+  .navbar-brand{
+    font-size: 1em;
+    margin-right: 10px;
+  }
+  .About {
+    font-size: .8em;
+  }
+  .About h1{
+    font-size: 1.5em;
+  }
+  th{
+    font-size: .8em;
+  }
 }

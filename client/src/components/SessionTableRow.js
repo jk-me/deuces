@@ -18,7 +18,7 @@ class SessionTableRow  extends React.Component{
         <td>{this.props.s.hand2*1}</td>
         <td>{this.props.s.hand1 + this.props.s.hand2}</td>
         <td>
-          <Button variant='outline-light' onClick={this.click}>Delete</Button>
+          <Button className='button' variant='outline-light' onClick={this.click}>Delete</Button>
         </td>
 
       </tr>

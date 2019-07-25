@@ -75,10 +75,10 @@ class GameContainer extends React.Component{
             <SheddedPile cards={this.props.last_played}/>
             <ButtonGroup>
 
-              <Button variant='outline-light' onClick={this.newGame}>
+              <Button className='button' variant='outline-light' onClick={this.newGame}>
                 New Game
               </Button>
-              <Button variant='outline-light' onClick={this.determineFirst}>
+              <Button className='button' variant='outline-light' onClick={this.determineFirst}>
                 Set first player
               </Button>
             </ButtonGroup>
@@ -86,16 +86,7 @@ class GameContainer extends React.Component{
             <p> Player {this.props.player[4]} turn </p>
             {this.showWinner()}
 
-            <div className='quick-start'>
-              <h5>Quick Start</h5>
-              <ul>
-                <li>Sessions track win/loss data. Select a session to continue playing or start a new session.</li>
-                <li>'New game' to begin a new round in session.</li>
-                <li>'Set first player' to begin play.</li>
-                <li>Go to ‘About’ to see full play rules</li>
 
-              </ul>
-            </div>
           </Col>
 
           <Hand
@@ -108,6 +99,18 @@ class GameContainer extends React.Component{
             session={this.props.current_session}
           />
         </Row>
+        <div className='quick-start'>
+          <div>
+            <h5>Quick Start</h5>
+            <ul>
+              <li>Sessions track win/loss data. Select a session to continue playing or start a new session.</li>
+              <li>'New game' to begin a new round in session.</li>
+              <li>'Set first player' to begin play.</li>
+              <li>Go to ‘About’ to see full play rules</li>
+
+            </ul>
+          </div>
+        </div>
         <SessionsContainer />
       </div>
     )
