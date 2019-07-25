@@ -1,7 +1,7 @@
 body{
-  background-image: linear-gradient(to bottom right, #660001, black);
-  /* background-image: url('https://imgnooz.com/sites/default/files/wallpaper/abstract/55281/black-and-red-abstraction-wallpapers-55281-2207361.jpg');
-  background-size:cover; */
+  /* background-image: linear-gradient(to bottom right, #660001, black); */
+  background-image: url(./ever-wild-unsplash.jpg);
+  background-size:cover;
 }
 .App {
   text-align: center;

@@ -171,11 +171,21 @@ class Hand extends React.Component{
     if (this.props.player === this.props.current){
       return (
         <div>
-        <p><ButtonGroup>
-          <Button variant='outline-info' onClick={this.playFn}>Play Selected Cards</Button>
-          <Button variant='outline-info' onClick={this.showHide}>Show/Hide</Button>
-        </ButtonGroup></p>
-        <p><Button variant='outline-info' onClick={this.passFn}>Pass Turn</Button></p>
+          <p>
+            <ButtonGroup>
+              <Button variant='outline-info' onClick={this.playFn}>
+                Play Selected Cards
+              </Button>
+              <Button variant='outline-info' onClick={this.showHide}>
+                Show/Hide
+              </Button>
+            </ButtonGroup>
+          </p>
+          <p>
+            <Button variant='outline-info' onClick={this.passFn}>
+              Pass Turn
+            </Button>
+          </p>
         </div>
       )
     }
