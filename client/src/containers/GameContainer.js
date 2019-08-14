@@ -36,19 +36,22 @@ class GameContainer extends React.Component{
     }
   } //dispatches setFirst() with 'hand1' or 'hand2'
 
-  newGame = () =>{
+  newGame = async () =>{
     let session = this.props.current_session.id
     let deck = this.props.deck
     if (session){
-      this.props.shuffle(deck)
+      await this.props.shuffle(deck)
       console.log(deck)
-      setTimeout(()=>this.props.fetchHand(1, deck), 500)
-      setTimeout(()=>this.props.fetchHand(2, deck), 500)
+      await this.props.fetchHand(1, deck)
+      await this.props.fetchHand(2, deck)
+      // setTimeout(()=>this.props.fetchHand(1, deck), 500)
+      // setTimeout(()=>this.props.fetchHand(2, deck), 500)
     }
     let cards = document.getElementsByClassName('card');
     for (const x of cards){
       x.style.visibility = "";
     }
+    await this.determineFirst()
   }
 
   showWinner = () =>{
@@ -81,15 +84,13 @@ class GameContainer extends React.Component{
 
           <Col className='center'>
             <SheddedPile cards={this.props.last_played}/>
-            <ButtonGroup>
+            
 
               <Button className='button' variant='outline-light' onClick={this.newGame}>
                 New Game
               </Button>
-              <Button className='button' variant='outline-light' onClick={this.determineFirst}>
-                Set first player
-              </Button>
-            </ButtonGroup>
+
+
 
             {this.showPlayer()}
             {this.showWinner()}
@@ -112,9 +113,9 @@ class GameContainer extends React.Component{
           <div>
             <h5>Quick Start</h5>
             <ul>
-              <li>Sessions track win/loss data. Select a session to continue playing or start a new session.</li>
-              <li>'New game' to begin a new round in session.</li>
-              <li>'Set first player' to begin play.</li>
+              <li>Select a session to continue playing or start a new session. (Sessions track wins/losses)</li>
+              <li>'New game' to begin a new game in session.</li>
+
               <li>Go to ‘About’ to see full play rules</li>
 
             </ul>
