@@ -11,9 +11,8 @@ class Hand extends React.Component{
 
   nums = ['3','4','5','6','7','8','9','10','JACK','QUEEN','KING','ACE','2']
   suits = ['DIAMONDS', 'CLUBS', 'HEARTS', 'SPADES']
-  // unselected = []
 
-  cardClick = (card) =>{
+  cardClick = (card) =>{  //handles card click, selecting to be played
     console.log(`clicked! ${card.code}`)
     if (this.state.selected.includes(card)){
       this.setState({selected:[...this.state.selected.filter(c => c !== card)]})
@@ -23,6 +22,7 @@ class Hand extends React.Component{
     }
   }
 
+  //returns play type ('single', etc) or true when last play empty
   checkValidTurn = (sel, last) =>{
     const nums = this.nums
     const suits = this.suits
@@ -106,8 +106,8 @@ class Hand extends React.Component{
       }
     }
   }
-    //returns play type ('single', etc) or true when last play empty
-  fiveCardPlayType = (s) =>{
+
+  fiveCardPlayType = (s) =>{  //returns 'straight', 'flush', etc
     const sSplit = {vals: s.map(c => c.value ), suits: s.map(c => c.suit)}
     const nums = this.nums
     let straight =[]
@@ -126,12 +126,12 @@ class Hand extends React.Component{
     }
     else if (straight.every( ele => ele === true))
       {return 'straight'}
-  }  //rtrn 'straight', 'flush', etc
+  }
 
   checkWin = () =>{
     if (this.props.hand.length === 0){
       this.props.gameWon({
-        game:{//thishand: session[hand]+1
+        game:{   //thishand: session[hand]+1
           [this.props.player]:this.props.session[this.props.player]+1}
         },
         this.props.session.id
@@ -139,10 +139,9 @@ class Hand extends React.Component{
     }
   }
 
-  playFn = () => {
-    //play logic
-    const selected = this.state.selected    //[{card}, {card}]
-    const last_played = this.props.last_played  //{play:'' cards:[{card},{card}]}
+  playFn = () => {  //handles 'play' button
+    const selected = this.state.selected    //[{card}, {code:'',suit:'',value:'',image:''}]
+    const last_played = this.props.last_played  //{play:'single' cards:[{card},{card}]}
     if (selected.length > 0 && ((selected.length === last_played.cards.length) || last_played.cards.length === 0)){
 
       const play = this.checkValidTurn(selected, last_played)
@@ -160,7 +159,25 @@ class Hand extends React.Component{
   passFn = () =>{
     this.props.playTurn([],this.props.player, '')
     this.showHide('play')
+  }
 
+  showHide = (pie) =>{
+    let player = this.props.player
+    let cards = document.getElementsByClassName(player); //card imgs have class="card hand1"
+
+    if (pie ==='play'){ //use for valid play/pass
+      for (const x of cards){
+        x.style.visibility = "";
+      }
+      return ''  //breaks out of function, so next loop not executed
+    }
+    for (const x of cards){  //use for show/hide button
+      if (x.style.visibility === "") {
+        x.style.visibility = "visible";
+      } else {
+        x.style.visibility = "";
+      }
+    }
   }
 
   renderCards = () =>{
@@ -189,24 +206,6 @@ class Hand extends React.Component{
           <p></p>
         </div>
       )
-    }
-  }
-  showHide = (pie) =>{
-    let p = this.props.player
-    let cards = document.getElementsByClassName(p);
-
-    if (pie ==='play'){
-      for (const x of cards){
-        x.style.visibility = "";
-      }
-      return ''
-    }
-    for (const x of cards){
-      if (x.style.visibility === "") {
-        x.style.visibility = "visible";
-      } else {
-        x.style.visibility = "";
-      }
     }
   }
 

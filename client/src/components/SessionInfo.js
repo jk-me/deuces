@@ -17,11 +17,6 @@ class SessionInfo extends React.Component{
         <SessionTableRow s={s} deleteSess={this.props.deleteSess}/>
       )
     })
-    // return this.props.sessions.map(s =>{
-    //   return (
-    //     <SessionTableRow s={s} deleteSess={this.props.deleteSess}/>
-    //   )
-    // })
   }
 
   render(){
@@ -45,6 +40,7 @@ class SessionInfo extends React.Component{
       </div>
     )
   }
+
 }
 
 const mapStateToProps = state =>{

@@ -1,4 +1,4 @@
-const apiurl = 'http://localhost:3001'
+// const apiurl = 'http://localhost:3001'
 
 export function fetchGames(){
   return dispatch =>{
@@ -35,7 +35,7 @@ export function saveDeck(deckData){
 
 export function fetchHand(num, deckstr){
   return dispatch =>{
-    dispatch({type: 'LOADING'})
+    // dispatch({type: 'LOADING'})
     console.log('fetching...')
     return fetch(`https://deckofcardsapi.com/api/deck/${deckstr}/draw/?count=13`)
       .then(resp => resp.json())
@@ -47,7 +47,7 @@ export function shuffleDeck(deckstr){
   return dispatch =>{
     console.log('shuffling...')
     fetch(`https://deckofcardsapi.com/api/deck/${deckstr}/shuffle/`)
-      .then(data => console.log('shuffled.'))
+      .then(console.log('shuffled'))
   }
 }
 

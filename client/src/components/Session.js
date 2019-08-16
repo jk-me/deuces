@@ -7,7 +7,7 @@ class Session extends React.Component{
   }
   render(){
     return (
-        <Button variant='outline-secondary' onClick={this.click}> Session {this.props.session.id} </Button>
+        <Button variant='outline-secondary' onClick={this.click} > Session {this.props.session.id} </Button>
     )
   }
 }

@@ -6,7 +6,6 @@ import {connect} from 'react-redux'
 import {fetchGames, fetchHand, shuffleDeck, gameWon} from '../actions/gameActions'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
-import ButtonGroup from 'react-bootstrap/ButtonGroup'
 import Button from 'react-bootstrap/Button'
 
 
@@ -41,11 +40,9 @@ class GameContainer extends React.Component{
     let deck = this.props.deck
     if (session){
       await this.props.shuffle(deck)
-      console.log(deck)
       await this.props.fetchHand(1, deck)
       await this.props.fetchHand(2, deck)
-      // setTimeout(()=>this.props.fetchHand(1, deck), 500)
-      // setTimeout(()=>this.props.fetchHand(2, deck), 500)
+      //meout(()=>this.props.fetchHand(2, deck), 500)
     }
     let cards = document.getElementsByClassName('card');
     for (const x of cards){
@@ -84,18 +81,11 @@ class GameContainer extends React.Component{
 
           <Col className='center'>
             <SheddedPile cards={this.props.last_played}/>
-            
-
-              <Button className='button' variant='outline-light' onClick={this.newGame}>
-                New Game
-              </Button>
-
-
-
+            <Button className='button' variant='outline-light' onClick={this.newGame}>
+              New Game
+            </Button>
             {this.showPlayer()}
             {this.showWinner()}
-
-
           </Col>
 
           <Hand
@@ -109,18 +99,18 @@ class GameContainer extends React.Component{
           />
 
         </Row>
+
         <div className='quick-start'>
           <div>
             <h5>Quick Start</h5>
             <ul>
               <li>Select a session to continue playing or start a new session. (Sessions track wins/losses)</li>
               <li>'New game' to begin a new game in session.</li>
-
               <li>Go to ‘About’ to see full play rules</li>
-
             </ul>
           </div>
         </div>
+
         <SessionsContainer />
       </div>
     )
