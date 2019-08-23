@@ -14,7 +14,7 @@ This app is built on the ruby gems listed in the Gemfile, and npm packages liste
 
 ### Installing
 
-To deploy the app locally, run the following commands in your terminal after cloning this repository to your local environment and navigating to its root directory. You may also need to change the Procfie to work locally, if it is different from below, as there is a version used for deployment.
+To start this application on a local server, run the following commands in your terminal after cloning this repository to your local environment and navigating to its root directory. You may also need to change the Procfie to work locally, if it is different from below, as there is a version used for deployment.
 
 ```
 //Procfile (replace all with code below)
