@@ -35,7 +35,7 @@ Then navigate to localhost:3000 in your web browser.
 
 * **Jenny Kam**
  [jk-me](https://github.com/jk-me)
- * **Blog:** [deuces](http://jellyjen.com/react_redux_final_project)
+ * **Blog:** [deuces](https://jk-me.github.io/react_redux_final_project)
 
 ## License
 
