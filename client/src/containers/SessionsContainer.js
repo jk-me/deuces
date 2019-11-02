@@ -46,7 +46,7 @@ const mapStateToProps = state =>{
     sessions: state.sessions,
     deck: state.deck,
     current_sess: state.current_sess
-    //{id, deck_key, p1wins..., total_games}
+    //{id, p1winNum , p2winNum}
   }
 }
 

@@ -37,11 +37,11 @@ class GameContainer extends React.Component{
 
   newGame = async () =>{
     let session = this.props.current_session.id
-    let deck = this.props.deck
+    let deckStr = this.props.deck
     if (session){
-      await this.props.shuffle(deck)
-      await this.props.fetchHand(1, deck)
-      await this.props.fetchHand(2, deck)
+      await this.props.shuffleDeck(deckStr)
+      await this.props.fetchHand(1, deckStr)
+      await this.props.fetchHand(2, deckStr)
       //meout(()=>this.props.fetchHand(2, deck), 500)
     }
     let cards = document.getElementsByClassName('card');
@@ -123,7 +123,7 @@ const mapStateToProps = state =>{
     deck: state.deck,
     hand1: state.hand1,
     hand2: state.hand2,
-    player: state.player,  //current, hand1 or hand2
+    player: state.player,  //current, 'hand1' or 'hand2'
     last_played: state.last_played, //{play:'' cards:[{card},{card}]}
     winner: state.winner
   }
@@ -132,16 +132,16 @@ const mapStateToProps = state =>{
 const mapDispatchToProps = dispatch =>{
   return {
     fetchGames: () => dispatch(fetchGames()),
-    fetchHand: (num, deck) => dispatch(fetchHand(num, deck)),
-    shuffle: (deck) => dispatch(shuffleDeck(deck)),
-    setFirst: (player) => dispatch({
+    fetchHand: (playerInt, deckStr) => dispatch(fetchHand(playerInt, deckStr)),
+    shuffleDeck: (deckStr) => dispatch(shuffleDeck(deckStr)),
+    setFirst: (playerInt) => dispatch({
       type: 'SET_FIRST_PLAYER',
-      player: player
+      player: playerInt
     }),
     playTurn: (selected, player, play) => dispatch({
       type: 'PLAY_TURN',
       selected: selected,
-      player: player,   //hand1 or hand2
+      player: player,   //'hand1' or 'hand2'
       play: play     //'single', 'flush'
     }),
     gameWon: (game, id) => dispatch(gameWon(game, id))
