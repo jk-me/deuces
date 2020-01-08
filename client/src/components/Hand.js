@@ -171,6 +171,17 @@ class Hand extends React.Component{
       }
       return ''  //breaks out of function, so next loop not executed
     }
+    toggleVisibleImgs(cards)
+    // for (const x of cards){  //use for show/hide button
+    //   if (x.style.visibility === "") {
+    //     x.style.visibility = "visible";
+    //   } else {
+    //     x.style.visibility = "";
+    //   }
+    // }
+  }
+
+  toggleVisibleImgs = (cards) =>{
     for (const x of cards){  //use for show/hide button
       if (x.style.visibility === "") {
         x.style.visibility = "visible";
