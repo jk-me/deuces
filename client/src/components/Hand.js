@@ -130,18 +130,16 @@ class Hand extends React.Component{
 
   checkWin = () =>{
     if (this.props.hand.length === 0){
-      this.props.gameWon({
-        game:{   //thishand: session[hand]+1
-          [this.props.player]:this.props.session[this.props.player]+1}
-        },
+      this.props.gameWon( //dispatch action
+        { game: { [this.props.player]: this.props.session[this.props.player]+1} }, //hand1: session[hand1]+1
         this.props.session.id
       )
     }
   }
 
-  playFn = () => {  //handles 'play' button
-    const selected = this.state.selected    //[{card}, {code:'',suit:'',value:'',image:''}]
-    const last_played = this.props.last_played  //{play:'single' cards:[{card},{card}]}
+  playFn = () => {
+    const selected = this.state.selected //[...cards]
+    const last_played = this.props.last_played  //{play:'single' cards:[...]}
     if (selected.length > 0 && ((selected.length === last_played.cards.length) || last_played.cards.length === 0)){
 
       const play = this.checkValidTurn(selected, last_played)
@@ -158,7 +156,7 @@ class Hand extends React.Component{
 
   passButton = () =>{
     this.props.playTurn([],this.props.player, '')
-    this.state.selected = []
+    this.setState({selected: []})
     this.showHide('pass')
   }
 
@@ -170,7 +168,7 @@ class Hand extends React.Component{
       for (const x of cards){
         x.style.visibility = "";
       }
-      return  //break out of function
+      return
     }
     this.toggleVisibleImgs(cards)
   }
