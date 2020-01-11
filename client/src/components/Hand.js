@@ -12,8 +12,8 @@ class Hand extends React.Component{
   nums = ['3','4','5','6','7','8','9','10','JACK','QUEEN','KING','ACE','2']
   suits = ['DIAMONDS', 'CLUBS', 'HEARTS', 'SPADES']
 
-  cardClick = (card) =>{  //handles card click, selecting to be played
-    console.log(`clicked! ${card.code}`)
+  cardClick = (card) =>{
+    // console.log(`clicked! ${card.code}`)
     if (this.state.selected.includes(card)){
       this.setState({selected:[...this.state.selected.filter(c => c !== card)]})
     }
@@ -156,8 +156,9 @@ class Hand extends React.Component{
     else{ console.log('invalid number of cards played') }
   }
 
-  passFn = () =>{
+  passButton = () =>{
     this.props.playTurn([],this.props.player, '')
+    this.state.selected = []
     this.showHide('pass')
   }
 
@@ -203,7 +204,7 @@ class Hand extends React.Component{
             </ButtonGroup>
           </div>
           <div>
-            <Button className='button' variant='outline-info' onClick={this.passFn}>
+            <Button className='button' variant='outline-info' onClick={this.passButton}>
               Pass Turn
             </Button>
           </div>
