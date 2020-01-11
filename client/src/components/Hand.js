@@ -158,18 +158,18 @@ class Hand extends React.Component{
 
   passFn = () =>{
     this.props.playTurn([],this.props.player, '')
-    this.showHide('play')
+    this.showHide('pass')
   }
 
-  showHide = (pie) =>{
+  showHide = (arg) =>{
     let player = this.props.player
-    let cards = document.getElementsByClassName(player); //card imgs have class="card hand1"
-
-    if (pie ==='play'){ //use for valid play/pass
+    let cards = document.getElementsByClassName(player);
+    //card imgs have class="card hand1"
+    if (arg === 'play' || arg === 'pass'){
       for (const x of cards){
         x.style.visibility = "";
       }
-      return ''  //breaks out of function, so next loop not executed
+      return  //break out of function
     }
     this.toggleVisibleImgs(cards)
   }
