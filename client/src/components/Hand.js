@@ -161,8 +161,7 @@ class Hand extends React.Component{
   }
 
   showHide = (arg) =>{
-    let player = this.props.player
-    let cards = document.getElementsByClassName(player);
+    let cards = document.getElementsByClassName(this.props.player);
     //card imgs have class="card hand1"
     if (arg === 'play' || arg === 'pass'){
       for (const x of cards){
@@ -173,8 +172,8 @@ class Hand extends React.Component{
     this.toggleVisibleImgs(cards)
   }
 
-  toggleVisibleImgs = (cards) =>{
-    for (const x of cards){  //use for show/hide button
+  toggleVisibleImgs = (imgArr) =>{ //use for show/hide button
+    for (const x of imgArr){
       if (x.style.visibility === "") {
         x.style.visibility = "visible";
       } else {
