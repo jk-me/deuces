@@ -1,7 +1,0 @@
-{
-  "name": "deuces",
-  "license": "MIT",
-  "engines": {
-    "node": "12.x",
-  }
-}
