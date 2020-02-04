@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "A 2 player card game built with react and redux",
   "main": "client/index.js",
-  "proxy": "http://localhost:3001",
   "directories": {
     "lib": "lib",
     "test": "test"
@@ -13,6 +12,7 @@
   "scripts": {
     "build": "cd client && npm install && npm build && cd ..",
     "deploy": "cp -a client/build/. public/",
+    "postinstall": "npm build && npm deploy && echo 'Client built!'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "engines":{
