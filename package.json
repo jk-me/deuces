@@ -5,6 +5,9 @@
     "node": "12.x",
   },
   "scripts": {
+    "build": "npm --cwd client install && npm --cwd client build",
+    "deploy": "cp -a client/build/. public/",
+    "heroku-postbuild": "npm build && npm deploy"
   },
   "dependencies": {}
 }
