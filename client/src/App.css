@@ -60,6 +60,12 @@ body{
   padding-top: 30px
 }
 
+.center .message{
+  margin: 30px 10px 10px 10px;
+  padding: 5px 0px 5px 0px;
+  border: 2px solid #666;
+}
+
 .hand1, .hand2{
   visibility: hidden;
   margin: 2px;
