@@ -67,6 +67,15 @@ class GameContainer extends React.Component{
     }
   }
 
+  showMessage = () =>{
+    return(
+      <div class="message">
+        Invalid Hand!
+        Player 1 wins!
+      </div>
+    )
+  }
+
   render(){
     return (
       <div className='App'>
@@ -88,6 +97,7 @@ class GameContainer extends React.Component{
             </Button>
             {this.showPlayer()}
             {this.showWinner()}
+            {this.showMessage()}
           </Col>
 
           <Hand
