@@ -14,22 +14,15 @@ This app is built on the ruby gems listed in the Gemfile, and npm packages liste
 
 ### Installing
 
-To start this application on a local server, run the following commands in your terminal after cloning this repository to your local environment and navigating to its root directory. You may also need to change the Procfie to work locally, if it is different from below, as there is a version used for deployment.
+To start this application on a local server, run the following commands in your terminal after cloning this repository to your local environment and navigating to its root directory.
+
+This method will use the heroku CLI.
 
 ```
-//Procfile (replace all with code below)
-web: sh -c 'cd client && npm start'
-api: bundle exec rails s -p 3001
-
-//In terminal:
-$bundle install
-$rake db:migrate
-$cd client && npm install
-$cd ..
-$rake start
+$ heroku local
 ```
 
-Then navigate to localhost:3000 in your web browser.
+Then navigate to localhost:5000 in your web browser.
 
 ## Author
 

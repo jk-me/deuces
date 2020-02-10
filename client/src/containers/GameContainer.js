@@ -21,10 +21,12 @@ class GameContainer extends React.Component{
     let suits = ['DIAMONDS', 'CLUBS', 'HEARTS', 'SPADES']
     let h1 = this.props.hand1.sort((a,b) => nums.indexOf(a.value) - nums.indexOf(b.value))
     let h2 = this.props.hand2.sort((a,b) => nums.indexOf(a.value) - nums.indexOf(b.value))
-    if (h1[0].value < h2[0].value)
-      { this.props.setFirst('hand1') } //return 'hand2'
-    else if (h2[0].value < h1[0].value)
-      { this.props.setFirst('hand2')  }
+    if (h1[0].value < h2[0].value){
+      this.props.setFirst('hand1') //return 'hand2'
+    }
+    else if (h2[0].value < h1[0].value){
+      this.props.setFirst('hand2')
+    }
     else {
       h1 = h1.filter( el => el.value === h1[0].value).sort((a,b) => suits.indexOf(a.suit) - suits.indexOf(b.suit))
       h2 = h2.filter( el => el.value === h2[0].value).sort((a,b) => suits.indexOf(a.suit) - suits.indexOf(b.suit))
