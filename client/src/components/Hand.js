@@ -140,7 +140,7 @@ class Hand extends React.Component{
   playFn = () => {
     const selected = this.state.selected //[...cards]
     const last_played = this.props.last_played  //{play:'single' cards:[...]}
-    if (selected.length > 0 && ((selected.length === last_played.cards.length) || last_played.cards.length === 0)){
+    if (selected.length <= 5 && selected.length > 0 && ((selected.length === last_played.cards.length) || last_played.cards.length === 0)){
 
       const play = this.checkValidTurn(selected, last_played)
       if (play){  //if play is true/valid
