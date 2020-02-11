@@ -54,12 +54,6 @@ class GameContainer extends React.Component{
     await this.determineFirst()
   }
 
-  showWinner = () =>{
-      if (this.props.winner){
-        return(<p>Winner: {this.props.winner} </p>)
-      }
-  }
-
   showPlayer = () =>{
     if (this.props.player){
       return(
@@ -67,6 +61,13 @@ class GameContainer extends React.Component{
       )
     }
   }
+
+  showWinner = () =>{
+      if (this.props.winner){
+        return(<p>Winner: {this.props.winner} </p>)
+      }
+  }
+
 
   render(){
     return (
@@ -88,8 +89,8 @@ class GameContainer extends React.Component{
               New Game
             </Button>
             {this.showPlayer()}
-            <MessageBox />
             {this.showWinner()}
+            <MessageBox />
           </Col>
 
           <Hand
