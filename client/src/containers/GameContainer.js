@@ -2,6 +2,7 @@ import React from 'react'
 import Hand from '../components/Hand'
 import SessionsContainer from './SessionsContainer'
 import SheddedPile from '../components/SheddedPile'
+import MessageBox from '../components/MessageBox'
 import {connect} from 'react-redux'
 import {fetchGames, fetchHand, shuffleDeck, gameWon} from '../actions/gameActions'
 import Col from 'react-bootstrap/Col'
@@ -67,15 +68,6 @@ class GameContainer extends React.Component{
     }
   }
 
-  showMessage = () =>{
-    return(
-      <div class="message">
-        Invalid Hand!
-        Player 1 wins!
-      </div>
-    )
-  }
-
   render(){
     return (
       <div className='App'>
@@ -96,8 +88,8 @@ class GameContainer extends React.Component{
               New Game
             </Button>
             {this.showPlayer()}
+            <MessageBox />
             {this.showWinner()}
-            {this.showMessage()}
           </Col>
 
           <Hand
