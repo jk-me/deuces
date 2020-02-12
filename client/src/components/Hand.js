@@ -129,13 +129,11 @@ class Hand extends React.Component{
   }
 
   checkWin = () =>{
-    if (this.props.hand.length === 0){
-      this.props.dispatchWin(
-        {
-          game: {
-            [this.props.player]: this.props.session[this.props.player]+1} 
-          }, //hand1: session[hand1]+1
-          this.props.session.id
+    const {hand, dispatchWin, player, session} = this.props
+    if (hand.length === 0){
+      dispatchWin(
+        { game: {[player]: session[player]+1}}, //hand1: session[hand1]+1
+        session.id
       )
     }
   }
