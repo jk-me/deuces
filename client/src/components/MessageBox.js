@@ -3,10 +3,10 @@ import {connect} from 'react-redux'
 
 class MessageBox  extends React.Component{
 
-  renderMessage = () =>{
-    if (this.props.winner){
-
-    }
+  showWinner = () =>{
+      if (this.props.winner){
+        return(<p>Winner: {this.props.winner} </p>)
+      }
   }
 
   showCurrPlayer = () =>{
@@ -20,6 +20,7 @@ class MessageBox  extends React.Component{
     return (
       <div class="message">
         {this.showCurrPlayer()}
+        {this.showWinner()}
         Invalid Hand!
         Player 1 wins!
       </div>
