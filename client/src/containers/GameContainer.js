@@ -54,21 +54,6 @@ class GameContainer extends React.Component{
     await this.determineFirst()
   }
 
-  showPlayer = () =>{
-    if (this.props.player){
-      return(
-        <p> Player {this.props.player[4]} turn </p>
-      )
-    }
-  }
-
-  showWinner = () =>{
-      if (this.props.winner){
-        return(<p>Winner: {this.props.winner} </p>)
-      }
-  }
-
-
   render(){
     return (
       <div className='App'>
@@ -85,11 +70,11 @@ class GameContainer extends React.Component{
 
           <Col className='center'>
             <SheddedPile cards={this.props.last_played}/>
+
             <Button className='button' variant='outline-light' onClick={this.newGame}>
               New Game
             </Button>
-            {this.showPlayer()}
-            {this.showWinner()}
+
             <MessageBox />
           </Col>
 
