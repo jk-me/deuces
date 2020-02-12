@@ -130,9 +130,12 @@ class Hand extends React.Component{
 
   checkWin = () =>{
     if (this.props.hand.length === 0){
-      this.props.gameWon( //dispatch action
-        { game: { [this.props.player]: this.props.session[this.props.player]+1} }, //hand1: session[hand1]+1
-        this.props.session.id
+      this.props.dispatchWin(
+        {
+          game: {
+            [this.props.player]: this.props.session[this.props.player]+1} 
+          }, //hand1: session[hand1]+1
+          this.props.session.id
       )
     }
   }
@@ -145,7 +148,7 @@ class Hand extends React.Component{
       const play = this.checkValidTurn(selected, last_played)
       if (play){  //if play is true/valid
         this.showHide('play')
-        this.props.playTurn(selected, this.props.player, play)
+        this.props.dispatchPlay(selected, this.props.player, play)
         this.setState({selected: []})
         setTimeout(() =>this.checkWin(), 300)
       }
@@ -155,7 +158,7 @@ class Hand extends React.Component{
   }
 
   passButton = () =>{
-    this.props.playTurn([],this.props.player, '')
+    this.props.dispatchPlay([],this.props.player, '')
     this.setState({selected: []})
     this.showHide('pass')
   }
