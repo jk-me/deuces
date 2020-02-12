@@ -55,21 +55,23 @@ class GameContainer extends React.Component{
   }
 
   render(){
+    const {player, hand1, hand2, playTurn, last_played, gameWon, current_session} = this.props
+
     return (
       <div className='App'>
         <Row>
           <Hand
             player='hand1'
-            current={this.props.player}
-            hand={this.props.hand1}
-            playTurn= {this.props.playTurn}
-            last_played= {this.props.last_played}
-            gameWon={this.props.gameWon}
-            session={this.props.current_session}
+            current={player}
+            hand={hand1}
+            playTurn= {playTurn}
+            last_played= {last_played}
+            gameWon={gameWon}
+            session={current_session}
           />
 
           <Col className='center'>
-            <SheddedPile cards={this.props.last_played}/>
+            <SheddedPile cards={last_played}/>
 
             <Button className='button' variant='outline-light' onClick={this.newGame}>
               New Game
@@ -80,12 +82,12 @@ class GameContainer extends React.Component{
 
           <Hand
             player='hand2'
-            current={this.props.player}
-            hand={this.props.hand2}
-            playTurn= {this.props.playTurn}
-            last_played= {this.props.last_played}
-            gameWon={this.props.gameWon}
-            session={this.props.current_session}
+            current={player}
+            hand={hand2}
+            playTurn= {playTurn}
+            last_played= {last_played}
+            gameWon={gameWon}
+            session={current_session}
           />
 
         </Row>
