@@ -64,9 +64,9 @@ class GameContainer extends React.Component{
             player='hand1'
             hand={hand1}
             current={player}
-            last_played= {last_played}
+            last_played={last_played}
             session={current_session}
-            dispatchPlay= {playTurn}
+            dispatchPlay={playTurn}
             dispatchWin={gameWon}
           />
 

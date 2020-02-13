@@ -23,31 +23,31 @@ class Hand extends React.Component{
   }
 
   //returns play type ('single', etc) or true when last play empty
+  //only called for valid number of cards (or last play empty)
   checkValidTurn = (sel, last) =>{
     const nums = this.nums
     const suits = this.suits
-    if (last.cards.length === 0) {return true}
+
+    const l = {values: last.cards.map(c => c.value ),
+        suits: last.cards.map(c => c.suit)}
 
     if (sel.length === 1){
       let s = sel[0]
-      let l = last.cards[0]
-      if (nums.indexOf(s.value) > nums.indexOf(l.value))
+      if (nums.indexOf(s.value) > nums.indexOf(l.values[0]))
         {return 'single'}
-      else if (nums.indexOf(s.value) === nums.indexOf(l.value)){
-        if (suits.indexOf(s.suit) > suits.indexOf(l.suit))
+      else if (nums.indexOf(s.value) === nums.indexOf(l.values[0])){
+        if (suits.indexOf(s.suit) > suits.indexOf(l.suits[0]))
           {return 'single'}
       }
+      else{return false}
     }
 
     else if (sel.length === 2){
       let s = {vals: sel.map(c => c.value ), suits: sel.map(c => c.suit)}
-      let l = {vals: last.cards.map(c => c.value ),
-          suits: last.cards.map(c => c.suit)}
-
       if (s.vals[0] === s.vals[1]){
-        if (nums.indexOf(s.vals[0]) > nums.indexOf(l.vals[0]))
+        if (nums.indexOf(s.vals[0]) > nums.indexOf(l.values[0]))
           {return 'pair'}
-        else if (s.vals[0] === l.vals[0]){
+        else if (s.vals[0] === l.values[0]){
           if ((s.suits.includes('HEARTS') && !l.suits.includes('SPADES')) || s.suits.includes('SPADES'))
             {return 'pair'}
         }
@@ -56,14 +56,14 @@ class Hand extends React.Component{
 
     else if (sel.length === 3){
       if (sel[0].value === sel[1].value && sel[2].value === sel[1].value){
-        if ( nums.indexOf(sel[0].value) > nums.indexOf(last.cards[0].value) )
+        if (nums.indexOf(sel[0].value)>nums.indexOf(l.values[0]))
           {return '3ofkind'}
       }
     }
 
     else if (sel.length === 4){
       if (sel[0].value === sel[1].value && sel[2].value === sel[1].value && sel[3].value === sel[1].value){
-        if ( nums.indexOf(sel[0].value) > nums.indexOf(last.cards[0].value) )
+        if ( nums.indexOf(sel[0].value) > nums.indexOf(l.values[0]) )
           { return '4ofkind' }
       }
     }
@@ -141,7 +141,7 @@ class Hand extends React.Component{
   playFn = () => {
     const selected = this.state.selected //[...cards]
     const last_played = this.props.last_played  //{play:'single' cards:[...]}
-    if (selected.length <= 5 && selected.length > 0 && ((selected.length === last_played.cards.length) || last_played.cards.length === 0)){
+    if ((selected.length === last_played.cards.length) || last_played.cards.length === 0){
 
       const play = this.checkValidTurn(selected, last_played)
       if (play){  //if play is true/valid
@@ -150,7 +150,7 @@ class Hand extends React.Component{
         this.setState({selected: []})
         setTimeout(() =>this.checkWin(), 300)
       }
-      else{ (console.log('your play is smaller')) }
+      else{ (console.log('your play is invalid or smaller')) }
     }
     else{ console.log('invalid number of cards played') }
   }
@@ -206,7 +206,6 @@ class Hand extends React.Component{
               Pass Turn
             </Button>
           </div>
-          <p></p>
         </div>
       )
     }

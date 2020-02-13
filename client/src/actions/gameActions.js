@@ -37,7 +37,7 @@ export function fetchHand(num, deckstr){
   return dispatch =>{
     // dispatch({type: 'LOADING'})
     console.log('fetching...')
-    return fetch(`https://deckofcardsapi.com/api/deck/${deckstr}/draw/?count=13`)
+    return fetch(`https://deckofcardsapi.com/api/deck/${deckstr}/draw/?count=26`)
       .then(resp => resp.json())
       .then(data => dispatch({type: 'DRAW_HAND', cards: data.cards, num: `hand${num}`}))
   }
