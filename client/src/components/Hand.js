@@ -29,11 +29,9 @@ class Hand extends React.Component{
     const suits = this.suits
 
     const l = {vals: last.cards.map(c => c.value ), suits: last.cards.map(c => c.suit)}
-    let s = {vals: sel.map(c => c.value ), suits: sel.map(c => c.suit)}
-
+    const s = {vals: sel.map(c => c.value ), suits: sel.map(c => c.suit)}
 
     if (sel.length === 1){
-      // let s = sel[0]
       if (nums.indexOf(s.vals[0]) > nums.indexOf(l.vals[0]))
         {return 'single'}
       else if (nums.indexOf(s.vals[0]) === nums.indexOf(l.vals[0])){
@@ -43,7 +41,6 @@ class Hand extends React.Component{
     }
 
     else if (sel.length === 2){
-      // let s = {vals: sel.map(c => c.value ), suits: sel.map(c => c.suit)}
       if (s.vals[0] === s.vals[1]){
         if (nums.indexOf(s.vals[0]) > nums.indexOf(l.vals[0]))
           {return 'pair'}
