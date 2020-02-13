@@ -176,6 +176,7 @@ class Hand extends React.Component{
         x.style.visibility = "visible";
       } else {
         x.style.visibility = "";
+        this.setState({selected: []})
       }
     }
   }
