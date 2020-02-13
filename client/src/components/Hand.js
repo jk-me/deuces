@@ -28,26 +28,26 @@ class Hand extends React.Component{
     const nums = this.nums
     const suits = this.suits
 
-    const l = {values: last.cards.map(c => c.value ),
-        suits: last.cards.map(c => c.suit)}
+    const l = {vals: last.cards.map(c => c.value ), suits: last.cards.map(c => c.suit)}
+    let s = {vals: sel.map(c => c.value ), suits: sel.map(c => c.suit)}
+
 
     if (sel.length === 1){
-      let s = sel[0]
-      if (nums.indexOf(s.value) > nums.indexOf(l.values[0]))
+      // let s = sel[0]
+      if (nums.indexOf(s.vals[0]) > nums.indexOf(l.vals[0]))
         {return 'single'}
-      else if (nums.indexOf(s.value) === nums.indexOf(l.values[0])){
-        if (suits.indexOf(s.suit) > suits.indexOf(l.suits[0]))
+      else if (nums.indexOf(s.vals[0]) === nums.indexOf(l.vals[0])){
+        if (suits.indexOf(s.suits[0]) > suits.indexOf(l.suits[0]))
           {return 'single'}
       }
-      else{return false}
     }
 
     else if (sel.length === 2){
-      let s = {vals: sel.map(c => c.value ), suits: sel.map(c => c.suit)}
+      // let s = {vals: sel.map(c => c.value ), suits: sel.map(c => c.suit)}
       if (s.vals[0] === s.vals[1]){
-        if (nums.indexOf(s.vals[0]) > nums.indexOf(l.values[0]))
+        if (nums.indexOf(s.vals[0]) > nums.indexOf(l.vals[0]))
           {return 'pair'}
-        else if (s.vals[0] === l.values[0]){
+        else if (s.vals[0] === l.vals[0]){
           if ((s.suits.includes('HEARTS') && !l.suits.includes('SPADES')) || s.suits.includes('SPADES'))
             {return 'pair'}
         }
@@ -55,15 +55,15 @@ class Hand extends React.Component{
     }
 
     else if (sel.length === 3){
-      if (sel[0].value === sel[1].value && sel[2].value === sel[1].value){
-        if (nums.indexOf(sel[0].value)>nums.indexOf(l.values[0]))
+      if (s.vals[0] === s.vals[1] && s.vals[2] === s.vals[1]){
+        if (nums.indexOf(s.vals[0])>nums.indexOf(l.vals[0]))
           {return '3ofkind'}
       }
     }
 
     else if (sel.length === 4){
-      if (sel[0].value === sel[1].value && sel[2].value === sel[1].value && sel[3].value === sel[1].value){
-        if ( nums.indexOf(sel[0].value) > nums.indexOf(l.values[0]) )
+      if (s.vals[0] === s.vals[1] && s.vals[2] === s.vals[1] && s.vals[3] === s.vals[1]){
+        if ( nums.indexOf(s.vals[0]) > nums.indexOf(l.vals[0]) )
           { return '4ofkind' }
       }
     }
@@ -139,14 +139,14 @@ class Hand extends React.Component{
   }
 
   playFn = () => {
-    const selected = this.state.selected //[...cards]
-    const last_played = this.props.last_played  //{play:'single' cards:[...]}
+    const {selected} = this.state //[...cards]
+    const {last_played, dispatchPlay} = this.props  //{play:'single' cards:[...]}
     if ((selected.length === last_played.cards.length) || last_played.cards.length === 0){
 
       const play = this.checkValidTurn(selected, last_played)
       if (play){  //if play is true/valid
         this.showHide('play')
-        this.props.dispatchPlay(selected, this.props.player, play)
+        dispatchPlay(selected, this.props.player, play)
         this.setState({selected: []})
         setTimeout(() =>this.checkWin(), 300)
       }
