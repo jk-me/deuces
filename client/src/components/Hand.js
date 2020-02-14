@@ -107,6 +107,7 @@ class Hand extends React.Component{
   fiveCardPlayType = (s) =>{  //returns 'straight', 'flush', etc
     const sSplit = {vals: s.map(c => c.value ), suits: s.map(c => c.suit)}
     const nums = this.nums
+
     let straight =[]
     for (let i=0; i<4; i++){ straight.push(nums.indexOf(sSplit.vals[i])+1 === (nums.indexOf(sSplit.vals[i+1])) ) }
 
@@ -137,7 +138,7 @@ class Hand extends React.Component{
 
   playFn = () => {
     const {selected} = this.state //[...cards]
-    const {last_played, dispatchPlay} = this.props  //{play:'single' cards:[...]}
+    const {last_played, dispatchPlay, dispatchError} = this.props  //{play:'single' cards:[...]}
     if ((selected.length === last_played.cards.length) || last_played.cards.length === 0){
 
       const play = this.checkValidTurn(selected, last_played)
@@ -147,9 +148,9 @@ class Hand extends React.Component{
         this.setState({selected: []})
         setTimeout(() =>this.checkWin(), 300)
       }
-      else{ (console.log('your play is invalid or smaller')) }
+      else{ (dispatchError('Your play is invalid or smaller.')) }
     }
-    else{ console.log('invalid number of cards played') }
+    else{ dispatchError('Invalid number of cards played.') }
   }
 
   passButton = () =>{

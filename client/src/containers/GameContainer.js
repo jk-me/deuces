@@ -63,7 +63,7 @@ class GameContainer extends React.Component{
           <Hand
             player='hand1'
             hand={hand1}
-            current={player} last_played={last_played} session={current_session} dispatchPlay={playTurn} dispatchWin={gameWon} dispatchErr={playError}
+            current={player} last_played={last_played} session={current_session} dispatchPlay={playTurn} dispatchWin={gameWon} dispatchError={playError}
           />
 
           <Col className='center'>
@@ -79,7 +79,7 @@ class GameContainer extends React.Component{
           <Hand
             player='hand2'
             hand={hand2}
-            current={player} last_played={last_played} session={current_session} dispatchPlay={playTurn} dispatchWin={gameWon} dispatchErr={playError}
+            current={player} last_played={last_played} session={current_session} dispatchPlay={playTurn} dispatchWin={gameWon} dispatchError={playError}
           />
 
         </Row>

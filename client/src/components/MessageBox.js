@@ -30,8 +30,6 @@ class MessageBox  extends React.Component{
         {this.showCurrentPlayer()}
         {this.showWinner()}
         {this.showPlayError()}
-        Invalid Hand!
-        Player 1 wins!
       </div>
     )
   }
