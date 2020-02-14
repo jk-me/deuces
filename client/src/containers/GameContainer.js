@@ -55,7 +55,7 @@ class GameContainer extends React.Component{
   }
 
   render(){
-    const {player, hand1, hand2, playTurn, last_played, gameWon, current_session} = this.props
+    const {player, hand1, hand2, playTurn, last_played, gameWon, current_session, playError} = this.props
 
     return (
       <div className='App'>
@@ -63,11 +63,7 @@ class GameContainer extends React.Component{
           <Hand
             player='hand1'
             hand={hand1}
-            current={player}
-            last_played={last_played}
-            session={current_session}
-            dispatchPlay={playTurn}
-            dispatchWin={gameWon}
+            current={player} last_played={last_played} session={current_session} dispatchPlay={playTurn} dispatchWin={gameWon} dispatchErr={playError}
           />
 
           <Col className='center'>
@@ -83,12 +79,7 @@ class GameContainer extends React.Component{
           <Hand
             player='hand2'
             hand={hand2}
-            current={player}
-            last_played={last_played}
-            session={current_session}
-            dispatchPlay={playTurn}
-            dispatchWin={gameWon}
-
+            current={player} last_played={last_played} session={current_session} dispatchPlay={playTurn} dispatchWin={gameWon} dispatchErr={playError}
           />
 
         </Row>
@@ -137,7 +128,11 @@ const mapDispatchToProps = dispatch =>{
       player: player,   //'hand1' or 'hand2'
       play: play     //'single', 'flush'
     }),
-    gameWon: (game, id) => dispatch(gameWon(game, id))
+    gameWon: (game, id) => dispatch(gameWon(game, id)),
+    playError: (errorStr) => dispatch({
+      type: 'PLAY_ERROR_MESSSAGE',
+      play_error: errorStr
+    })
   }
 }
 

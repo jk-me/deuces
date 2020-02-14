@@ -64,7 +64,8 @@ export default function gameReducer(
 
       case 'PLAY_ERROR_MESSSAGE':
         return {...state, play_error: action.play_error}
-    default:
-      return state
+        
+      default:
+        return state
   }
 }
