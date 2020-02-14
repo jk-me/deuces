@@ -8,7 +8,8 @@ export default function gameReducer(
     hand2:[],
     player: '',
     last_played: {play: '', cards: []},
-    winner:''
+    winner:'',
+    play_error:''
   },
   action){
 
@@ -18,7 +19,7 @@ export default function gameReducer(
     const winner = state.player === 'hand1' ? 'Player 2' : 'Player 1'
       return {...state,
         current_sess: action.payload,
-        sessions:[...state.sessions.filter( el => el.id !==action.payload.id), action.payload],
+        sessions:[...state.sessions.filter( el => el.id !== action.payload.id), action.payload],
         player:'',
         winner:winner
       }
@@ -57,6 +58,9 @@ export default function gameReducer(
         last_played: {play: action.play, cards:[...action.selected]},
         player: next_player
       }
+
+      case 'PLAY_ERROR_MESSSAGE':
+        return {...state, play_error: action.play_error}
     default:
       return state
   }

@@ -18,11 +18,18 @@ class MessageBox  extends React.Component{
     }
   }
 
+  showPlayError = () =>{
+    if (this.props.play_error){
+      return(<p>{this.props.play_error} </p>)
+    }
+  }
+
   render(){
     return (
       <div class="message">
         {this.showCurrentPlayer()}
         {this.showWinner()}
+        {this.showPlayError()}
         Invalid Hand!
         Player 1 wins!
       </div>
@@ -33,6 +40,7 @@ class MessageBox  extends React.Component{
 const mapStateToProps = state =>{
   return{
     winner: state.winner,
+    play_error: state.play_error,
     current_player: state.player
   }
 }
