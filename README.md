@@ -19,7 +19,7 @@ To start this application on a local server, run the following commands in your 
 This method will use the heroku CLI.
 
 ```
-$ heroku local
+$ heroku local -f Procfile.dev
 ```
 
 Then navigate to localhost:5000 in your web browser.
