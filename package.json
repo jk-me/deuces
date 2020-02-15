@@ -2,7 +2,7 @@
   "name": "deuces",
   "version": "1.0.0",
   "description": "A 2 player card game built with react and redux",
-  "main": "client/index.js",
+  "main": "client/src/index.js",
   "directories": {
     "lib": "lib",
     "test": "test"
