@@ -148,7 +148,7 @@ class Hand extends React.Component{
         this.setState({selected: []})
         setTimeout(() =>this.checkWin(), 300)
       }
-      else{ (dispatchError('Your play is invalid or smaller.')) }
+      else{ (dispatchError('Your play is invalid or smaller than the previous play.')) }
     }
     else{ dispatchError('Invalid number of cards played.') }
   }

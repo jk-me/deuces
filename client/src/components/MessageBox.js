@@ -5,32 +5,33 @@ class MessageBox  extends React.Component{
 
   showWinner = () =>{
       if (this.props.winner){
-        return(<p>Winner: {this.props.winner} </p>)
+        return(<div class="message">Winner: {this.props.winner} </div>)
       }
   }
 
-  showCurrentPlayer = () =>{
-    const {current_player} = this.props
-    if (current_player){
+  showTurnInfo = () =>{
+    const {current_player, play_error} = this.props
+    if (play_error){
       return(
-        <p> Player {current_player[4]} turn </p>
+        <div class="message">
+          <p> Player {current_player[4]} turn </p>
+          <p>{play_error}</p>
+        </div>
       )
     }
-  }
-
-  showPlayError = () =>{
-    if (this.props.play_error){
-      return(<p>{this.props.play_error} </p>)
+    else if (current_player){
+      return(
+        <div class="message"> Player {current_player[4]} turn </div>
+      )
     }
   }
 
   render(){
     return (
-      <div class="message">
-        {this.showCurrentPlayer()}
+      <>
+        {this.showTurnInfo()}
         {this.showWinner()}
-        {this.showPlayError()}
-      </div>
+      </>
     )
   }
 }
