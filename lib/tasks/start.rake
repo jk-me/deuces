@@ -5,7 +5,7 @@ namespace :start do
 
   desc 'Start production server'
   task :production do
-    exec 'NPM_CONFIG_PRODUCTION=true npm run postinstall && heroku local'
+    exec 'NPM_CONFIG_PRODUCTION=true npm run heroku-postbuild && heroku local'
   end
 end
 
