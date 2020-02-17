@@ -2,7 +2,11 @@
 
 A recreation of the card game Deuces, in a React/Redux web application with a Rails API backend.
 
-This app is now deployed on heroku at [Deuces](https://deuces-card-game.herokuapp.com/)
+This repository is deprecated, but can still be deployed locally from one repo using the instructions below. [Old Heroku App](https://deuces-card-game-old.herokuapp.com/)
+
+The updated frontend and backend for this project is available at [Frontend Github](https://github.com/jk-me/deuces-front) and [Backend Github](https://github.com/jk-me/deuces-back)
+
+The updated application has been deployed at [Heroku](https://deuces-card-game.herokuapp.com/)
 
 ## Getting Started
 
@@ -19,6 +23,8 @@ To start this application on a local server, run the following commands in your 
 This method will use the heroku CLI.
 
 ```
+$ bundle install
+$ cd client && npm i
 $ heroku local -f Procfile.dev
 ```
 
