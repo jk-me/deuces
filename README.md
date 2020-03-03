@@ -4,7 +4,7 @@ A recreation of the card game Deuces, in a React/Redux web application with a Ra
 
 The updated application has been deployed on [Heroku](https://deuces-card-game.herokuapp.com/)
 
-This repository is deprecated, but can still be deployed locally from one repo using the instructions below.
+This repository is deprecated, but can still be run locally from one repo using the instructions below.
 
 The updated frontend and backend repositories for this project are available at [Frontend (git)](https://github.com/jk-me/deuces-front) and [Backend (git)](https://github.com/jk-me/deuces-back)
 
