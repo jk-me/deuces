@@ -27,6 +27,7 @@ class SessionsContainer extends React.Component{
   }
 
   render(){
+    const {current_sess} = this.props
     return(
       <div>
         <ButtonGroup>
@@ -34,7 +35,7 @@ class SessionsContainer extends React.Component{
           <Button variant='outline-secondary' onClick={this.newSession}>New Session</Button>
         </ButtonGroup>
         <p>
-          <span>Current Session: {this.props.current_sess.id}
+          <span>Current Session: {current_sess.id}
           </span>
         </p>
       </div>
