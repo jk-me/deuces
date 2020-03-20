@@ -2,7 +2,8 @@ import React from 'react'
 
 class Card  extends React.Component{
   click = () =>{
-    this.props.clickFn(this.props.card)
+    const {card, clickFn} = this.props
+    clickFn(card)
   }
   render(){
     return (
