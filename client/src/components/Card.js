@@ -5,9 +5,10 @@ class Card  extends React.Component{
     this.props.clickFn(this.props.card)
   }
   render(){
+    const {player, card} = this.props
     return (
       <span className='cardBorder'>
-        <img className={'card '+ this.props.player} src={this.props.card.image} alt='' onClick={this.click}/>
+        <img className={'card '+ player} src={card.image} alt='' onClick={this.click}/>
       </span>
     )
   }
